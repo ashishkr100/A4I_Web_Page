@@ -204,6 +204,14 @@
         word-wrap: break-word;
         word-break: break-word;
       }
+      /* 7) Full-width nav links. Avoid misalignment during wrap */
+      .nav-links a.nav-link {
+        display: block;        /* makes the entire link occupy its own line */
+        width: 100%;           /* full width of its container */
+        text-align: center;    /* center the text (and any wrapped lines) */
+        padding: 12px 0;       /* vertical padding, no horizontal padding */
+      }
+
     }
 
     /* DESKTOP */
