@@ -206,10 +206,12 @@
       }
       /* 7) Full-width nav links. Avoid misalignment during wrap */
       .nav-links a.nav-link {
-        display: block;        /* makes the entire link occupy its own line */
-        width: 100%;           /* full width of its container */
-        text-align: center;    /* center the text (and any wrapped lines) */
-        padding: 12px 0;       /* vertical padding, no horizontal padding */
+        display: block;
+        width: 100%;
+        padding: 12px 16px;    /* horizontal padding for the block */
+        text-indent: -16px;    /* pull the first line left back past the padding */
+        text-align: left;      /* left-align text */
+        white-space: normal;   /* allow wrapping */
       }
 
     }
