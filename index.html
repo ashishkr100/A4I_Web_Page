@@ -129,8 +129,20 @@
     .footer-contact a { color: var(--text-light) !important; text-decoration: none; }
     .footer-contact span.icon { margin-right: 8px; font-size: 1.2rem; color: var(--text-light); }
 
+
+
+    /* DESKTOP */
+    @media (min-width: 769px) {
+      .hero-container { text-align: left; }
+      .logo-title-container { justify-content: flex-start; }
+      .hero-container h1 { font-size: 3rem; }
+      .intro { font-size: 1.25rem; }
+      .spotlight-photo img { max-width: 100%; height: auto; }
+      .btn { font-size: 1.125rem; padding: 14px 32px; }
+    }
+
     /* RESPONSIVE: tablets & small devices (≤768px) */
-    @media (max-width: 768px), body.nav-wrapped {
+    @media (max-width: 768px) {
       /* 1) Full-width top-level items */
       .nav-links li {
         width: 100%;
@@ -138,12 +150,17 @@
 
       /* 1B) Reduce the gap between stacked items */
       .nav-links {
+        /*column-gap: 20px;      /* same as desktop */
         gap: 8px;      /* was 20px; now tighter on mobile */
       }
 
-      /* 1C) Optional: reduce vertical padding on each link */
+      /* 1C) Smaller link padding */
       .nav-links a.nav-link {
-        padding: 8px 16px;  /* was 12px 16px; now 8px top/bottom */
+        display: block;
+        width: 100%;
+        padding: 8px 16px;
+        text-align: left;
+        white-space: normal;
       }
 
       /* 2) Static, full-width dropdown panel */
@@ -219,25 +236,13 @@
         /*outline: 2px dashed red !important;*/
         display: block;
         width: 100%;
-        padding: 12px 16px;    /* horizontal padding for the block */
-        text-indent: -16px;    /* pull the first line left back past the padding */
+        padding: 8px 16px;     /* horizontal padding for the block */
+        text-indent: -8px;     /* pull the first line left back past the padding */
         text-align: left;      /* left-align text */
         white-space: normal;   /* allow wrapping */
       }
 
-
-    }
-
-    /* DESKTOP */
-    @media (min-width: 769px) {
-      .hero-container { text-align: left; }
-      .logo-title-container { justify-content: flex-start; }
-      .hero-container h1 { font-size: 3rem; }
-      .intro { font-size: 1.25rem; }
-      .spotlight-photo img { max-width: 100%; height: auto; }
-      .btn { font-size: 1.125rem; padding: 14px 32px; }
-    }
-
+    }    
     /* Accessibility Enhancements */
     a:focus, button:focus {
       outline: 2px solid var(--accent-color);
@@ -250,16 +255,16 @@
        - They will override any desktop absolute‐positioning once body.nav-wrapped is set
        ========================================================================== */
     body.nav-wrapped .dropdown-menu {
-      position: static !important;
-      z-index: auto !important;
-      width: 100% !important;
-      background-color: var(--secondary-color);
-      margin: 4px 0;
-      padding: 8px 0;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      display: none;
+        position: static !important;
+        z-index: auto !important;
+        width: 100% !important;
+        background-color: var(--secondary-color);
+        margin: 4px 0;
+        padding: 8px 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        display: none;
     }
-    
+      
     body.nav-wrapped .nav-links li:hover > .dropdown-menu,
     body.nav-wrapped .nav-links li:focus-within > .dropdown-menu {
       display: block;
@@ -567,12 +572,13 @@ document.addEventListener("DOMContentLoaded", () => {
         </li>
         <li>
           <span class="icon">📞</span>
-          <a href="tel:+918041407777">+91 80 4140 7777</a> /
-          <a href="tel:+9128527627">2852 7627</a>
+          <a href="tel:+918041407777">+91 80 41407777</a> /
+          <a href="tel:+9128527627">28527627</a>
         </li>
         <li>
           <span class="icon">📍</span>
-          IIITB – Electronic City campus, 26/C, Electronics City,<br><br>
+          IIITB – Electronic City campus,<br> 
+          26/C, Electronic City,<br>
           Hosur Road, Bengaluru – 560100
         </li>
       </ul>
