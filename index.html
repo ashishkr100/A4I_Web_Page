@@ -254,7 +254,15 @@
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         display: none;
     }
-      
+    
+    /* NAV-WRAPPED: tighter spacing */
+    body.nav-wrapped .nav-links {
+      gap: 4px !important;           /* shrink the space between rows */
+    }
+    body.nav-wrapped .nav-links a.nav-link {
+      padding: 4px 12px !important;  /* 4px top/bottom, 12px left/right */
+      line-height: 1.2 !important;   /* collapse any extra line height */
+    }
     body.nav-wrapped .nav-links li:hover > .dropdown-menu,
     body.nav-wrapped .nav-links li:focus-within > .dropdown-menu {
       display: block;
