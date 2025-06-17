@@ -60,18 +60,8 @@
        align-items: center; 
        justify-content: space-between; 
     }
-    .logo img { height: 60px; width: auto; }
-    .logo-container {
-      width: 135px;             /* desired final width */
-      height: 45px;            /* desired final height */
-      overflow: hidden;
-    }
-    .logo-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;       /* fills the box, cropping whitespace */
-      object-position: center; /* keeps the logo centered */
-    }
+    .logo img { height: 60px; width: auto; display: block; }
+
     .nav-links { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; }
     .nav-links li { position: relative; }
     .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: background var(--transition-speed), transform var(--transition-speed); text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; }
