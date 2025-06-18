@@ -53,12 +53,19 @@
     /* HEADER & NAVIGATION */
     header { background: var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
     nav { 
-       max-width: 1200px;
-       margin: 0 auto; 
-       padding: 10px 20px; 
-       display: flex; 
-       align-items: center; 
-       justify-content: space-between; 
+        position:relative;
+        background-color: var(--primary-color); 
+        color: var(--text-light); 
+        font-size: 1rem; 
+        font-weight: 500; 
+        line-height: 1.5; 
+        height: 80px;
+          max-width: 1200px;
+        margin: 0 auto; 
+        padding: 10px 20px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between;
     }
     .logo img { height: 60px; width: auto; display: block; }
 
@@ -119,7 +126,25 @@
     .footer-contact a { color: var(--text-light) !important; text-decoration: none; }
     .footer-contact span.icon { margin-right: 8px; font-size: 1.2rem; color: var(--text-light); }
 
-
+    /* hide the hamburger by default, show the normal menu */
+    .menu-toggle {
+      display: none;             /* hide at desktop */
+      position: absolute;
+      top: 50%;                  /* vertically center in the  nav bar */
+      right: 20px;               /* adjust this to taste */
+      transform: translateY(-50%);
+      background: none;          /* remove any default BG */
+      border: none;
+      cursor: pointer;
+      z-index: 1001;             /* above the links */
+    }
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      margin: 4px 0;
+      background-color: var(--text-light);
+    }
 
     /* DESKTOP */
     @media (min-width: 769px) {
@@ -154,14 +179,28 @@
 
     /* RESPONSIVE: tablets & small devices (≤768px) */
     @media (max-width: 768px) {
-      /* 1) Full-width top-level items */
-      .nav-links li {
-        width: 100%;
+
+      /* show hamburger, hide normal links */
+      .menu-toggle {
+        display: block;
       }
 
-      /* 1B) Reduce the gap between stacked items */
+      /* 1) Reduce the gap between stacked items */
       .nav-links {
-        gap: 4px;               /* small row-gap */
+        display: none;              /* hide by default */
+        flex-direction: column;     /* stack vertically when shown */
+        gap: 4px;
+        width: 100%;
+        background: var(--primary-color);
+        max-height: none !important;
+        overflow: visible !important;
+      }
+      /* when .active is added, un-hide */
+      .nav-links.active {
+        display: flex !important;     /* show when .active is added */
+        /*flex-direction: column;       
+        max-height: none;             /* clear any height limit */
+        /*overflow: visible;            /* clear any overflow clipping */
       }
       .nav-links li {
         width: 100%;            /* full-width buttons */
@@ -249,7 +288,20 @@
         text-align: left;      /* left-align text */
         white-space: normal;   /* allow wrapping */
       }
-
+      /* make absolutely sure the menu can grow to show all items */
+      .nav-links,
+      .nav-links.active {
+        max-height: none      !important;
+        overflow: visible     !important;
+      }
+      /* also allow the parent <nav> to expand if needed */
+      header nav {
+        display: flex;
+        flex-direction: column;     /* stack the toggle + the menu */
+        align-items: flex-start;    /* don’t center each line */
+        height: auto !important;    /* override any fixed height left over */
+        overflow: visible !important;
+      }
     }    
     /* Accessibility Enhancements */
     a:focus, button:focus {
@@ -305,6 +357,13 @@
         <img src="./Images/Logo/Final-a4i-logo-Inverse-cropped.png" alt="A4I Logo">
         </div>
       </a>
+      <!-- ► Hamburger toggle, *in* your HTML, *not* in the <style> block -->
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <ul class="nav-links">
         <li><a href="#about" class="nav-link">About</a></li>
       <li>
@@ -498,6 +557,7 @@ document.addEventListener("DOMContentLoaded", () => {
       loadPage(hash, section);
       history.pushState({ hash, section }, "", "#"+hash);
     }
+
   });
 
   // —— 6) HANDLE back/forward —— 
@@ -529,8 +589,25 @@ document.addEventListener("DOMContentLoaded", () => {
     // initial wrap-check
     checkNavWrap();
   }
-
-});
+  // ——— hamburger menu toggle ———
+  const menuBtn = document.querySelector('.menu-toggle');
+  const navList = document.querySelector('.nav-links');
+    if (menuBtn && navList) {
+      menuBtn.addEventListener('click', () => {
+        navList.classList.toggle('active');
+    })
+    }
+  });
+  // Auto-collapse hamburger (and any open dropdowns) on any nav-link click
+  document.querySelectorAll(".nav-links a.nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+      // collapse the main menu
+      document.querySelector(".nav-links")?.classList.remove("active");
+      // hide any open dropdown panels (if you’ve been toggling them inline)
+      document.querySelectorAll(".dropdown-menu")
+        .forEach(menu => menu.style.display = "none");
+    });
+})                                        
 </script>
 
 <!-- FOOTER -->
@@ -657,7 +734,18 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     }
   });
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
   </script>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', () => nav.classList.toggle('active'));
+    });
+  </script>
 </body>
 </html>
