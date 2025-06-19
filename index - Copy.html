@@ -60,22 +60,20 @@
         font-weight: 500; 
         line-height: 1.5; 
         height: 80px;
-        max-width: 1200px;
+          max-width: 1200px;
         margin: 0 auto; 
         padding: 10px 20px; 
         display: flex; 
         align-items: center; 
         justify-content: space-between;
     }
-
     .logo img { height: 60px; width: auto; display: block; }
 
-    
-    .nav-links { list-style: none; display: flex; gap: 4px 20px; flex-wrap: wrap; overflow: visible;} 
+    .nav-links { list-style: none; display: flex; gap: 4px 20px; flex-wrap: wrap; }
     .nav-links li { position: relative; }
     .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: background var(--transition-speed), transform var(--transition-speed); text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; }
     .nav-links a:hover { background-color: rgba(255,102,0,0.2); transform: translateY(-2px); }
-    .dropdown-menu { display: none; position: absolute; margin-top: 4px; top: 100%; left: 0; margin-top: 4px; z-index: 1000; background-color: var(--secondary-color); border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); list-style: none; padding: 8px 0; min-width: 160px; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background-color: var(--secondary-color); border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); list-style: none; padding: 8px 0; min-width: 160px; }
     .dropdown-menu li a { display: block; color: var(--text-light); padding: 8px 16px; white-space: nowrap; transition: background var(--transition-speed); }
     .dropdown-menu li a:hover { background-color: var(--primary-color); }
     .nav-links li:hover > .dropdown-menu { display: block; }
@@ -128,24 +126,26 @@
     .footer-contact a { color: var(--text-light) !important; text-decoration: none; }
     .footer-contact span.icon { margin-right: 8px; font-size: 1.2rem; color: var(--text-light); }
 
-    /* hide the toggle on desktop */
+    /* hide the hamburger by default, show the normal menu */
     .menu-toggle {
-      display: none;
-      background: none;
+      display: none;             /* hide at desktop */
+      position: absolute;
+      top: 50%;                  /* vertically center in the  nav bar */
+      right: 20px;               /* adjust this to taste */
+      transform: translateY(-50%);
+      background: none;          /* remove any default BG */
       border: none;
       cursor: pointer;
-      padding: 8px;
+      z-index: 1001;             /* above the links */
     }
-
-    /* style the three bars */
     .menu-toggle span {
       display: block;
-      width: 25px;
-      height: 3px;
-      background: var(--text-light);
+      width: 24px;
+      height: 2px;
       margin: 4px 0;
-      transition: transform 0.2s ease;
+      background-color: var(--text-light);
     }
+
     /* DESKTOP */
     @media (min-width: 769px) {
       .hero-container { text-align: center; }
@@ -156,18 +156,11 @@
       .btn { font-size: 1.125rem; margin: 20px auto 0; }
 
       body.nav-wrapped .nav-links a.nav-link {
-        padding-top: 4px;
-        padding-bottom: 4px;
+        padding: 4px 12px;
         line-height: 1.2;
-        text-indent: 0; /* no indent */
-        text-align: left !important;
-        white-space: normal;
       }
       body.nav-wrapped .nav-links {
         gap: 4px !important; /* shrink the space between rows */
-        flex-wrap: wrap !important;
-        justify-content: flex-start !important;
-        align-content: flex-start !important;
       }
       body.nav-wrapped .nav-links li:hover > .dropdown-menu,
       body.nav-wrapped .nav-links li:focus-within > .dropdown-menu {
@@ -181,25 +174,7 @@
         font-size: 0.95rem;
         line-height: 1.4;
       }
-
-      /* make sure the parent <nav> can expand to show all items */
-      header nav {
-        /*display: flex;*/
-        flex-direction: row;     /* keep the toggle + the menu side by side */
-        align-items: center;     /* center each line vertically */
-        /*height: 80px !important; /* fixed height for desktop */
-        /*overflow: visible !important;*/
-      }
-      .nav-links {
-        display: flex;           /* show links in a row */
-        flex-wrap: nowrap;       /* no wrapping */
-        max-height: 80px;        /* allow full height */
-        overflow: visible;       /* no scrollbars */
-      
-      }
-      .nav-links li {
-        position: relative;      /* needed for dropdowns */
-      }
+    
     }
 
     /* RESPONSIVE: tablets & small devices (≤768px) */
@@ -223,7 +198,9 @@
       /* when .active is added, un-hide */
       .nav-links.active {
         display: flex !important;     /* show when .active is added */
+        /*flex-direction: column;       
         max-height: none;             /* clear any height limit */
+        /*overflow: visible;            /* clear any overflow clipping */
       }
       .nav-links li {
         width: 100%;            /* full-width buttons */
@@ -235,7 +212,6 @@
         white-space: normal;    /* allow wrap */
         text-align: left;
       }
-      /* submenu becomes part of flow */
       .dropdown-menu {
         position: static !important;
         width: 100% !important;
@@ -304,10 +280,11 @@
       }
       /* 7) Full-width nav links. Avoid misalignment during wrap */
       .nav-links a.nav-link {
+        /*outline: 2px dashed red !important;*/
         display: block;
         width: 100%;
         padding: 8px 16px;     /* horizontal padding for the block */
-        text-indent: 0;        /* no indent */
+        /*text-indent: -8px;     /* pull the first line left back past the padding */
         text-align: left;      /* left-align text */
         white-space: normal;   /* allow wrapping */
       }
@@ -355,7 +332,6 @@
     body.nav-wrapped .nav-links a.nav-link {
       padding: 4px 12px !important;  /* 4px top/bottom, 12px left/right */
       line-height: 1.2 !important;   /* collapse any extra line height */
-      text-indent: 0 !important;
     }
     body.nav-wrapped .nav-links li:hover > .dropdown-menu,
     body.nav-wrapped .nav-links li:focus-within > .dropdown-menu {
@@ -369,12 +345,6 @@
       font-size: 0.95rem;
       line-height: 1.4;
     }
-    /* force the submenu open whenever we’ve toggled the class */
-    .nav-links li.submenu-open > .dropdown-menu {
-      display: block !important;
-    }
-    .dropdown-menu { display: none; position: absolute; margin-top: 4px; top: 100%; left: 0; margin-top: 4px; z-index: 1000; background-color: var(--secondary-color); border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); list-style: none; padding: 8px 0; min-width: 160px; }
-
   </style>
 </head>
 <body>
@@ -396,56 +366,36 @@
 
       <ul class="nav-links">
         <li><a href="#about" class="nav-link">About</a></li>
-        <li>
-          <a href="#partners-projects"
-            class="nav-link"
-            data-section="Partners & Projects">
-            Partners & Projects
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#iiitb-microsoft"
-                class="nav-link"
-                data-parent="Partners & Projects"
-                data-section="IIITB & Microsoft">
-                IIITB & Microsoft
-              </a>
-            </li>
-            <li>
-              <a href="#domain-partners-projects"
-                class="nav-link"
-                data-parent="Partners & Projects"
-                data-section="Domain Partners & Projects">
-                Domain Partners & Projects
-            </a>
-        </li>
-        </ul>
-        </li>
-          <li><a href="#news-events" class="nav-link">News &amp; Events</a></li>
-          <li><a href="#research" class="nav-link">Research</a></li>
-          <li><a href="#blogs" class="nav-link">Blogs</a></li>
+      <li>
+        <a href="#partners-projects"
+          class="nav-link"
+          data-section="Partners & Projects">
+          Partners & Projects
+        </a>
+        <ul class="dropdown-menu">
           <li>
-            <a href="#our-team" class="nav-link" data-section="Our Team">Our Team</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="#microsoft-team"
-                  class="nav-link"
-                  data-parent="Our Team"
-                  data-section="Microsoft Team">
-                  Microsoft Team
-                </a>
-              </li>
-              <li>
-                <a href="#iiitb-team"
-                  class="nav-link"
-                  data-parent="Our Team"
-                  data-section="IIITB Team">
-                  IIITB Team
-                </a>
-              </li>
-            </ul>
+            <a href="#iiitb-microsoft"
+              class="nav-link"
+              data-parent="Partners & Projects"
+              data-section="IIITB & Microsoft">
+              IIITB & Microsoft
+            </a>
+          </li>
+          <li>
+            <a href="#domain-partners-projects"
+              class="nav-link"
+              data-parent="Partners & Projects"
+              data-section="Domain Partners & Projects">
+              Domain Partners & Projects
+            </a>
           </li>
         </ul>
+      </li>
+        <li><a href="#news-events" class="nav-link">News &amp; Events</a></li>
+        <li><a href="#research" class="nav-link">Research</a></li>
+        <li><a href="#blogs" class="nav-link">Blogs</a></li>
+        <li><a href="#our-team" class="nav-link">Our Team</a></li>
+      </ul>
     </nav>
   </header>
 
@@ -483,9 +433,9 @@
             A4I (AI Innovation & Inclusion Initiative) is a collaboration between <b>Microsoft and IIIT Bangalore</b>. Our mission is to leverage cutting-edge artificial intelligence to drive inclusion and sustainable impact for underserved communities worldwide. We aim to evolve, engineer, and deploy large-scale <b>Digital Public Goods</b>.
            <br /> <br />
 	   A4I is designed to nurture a strong ecosystem for AI-led innovation that prioritizes inclusive and sustainable development. With support and funding by <b>Microsoft Philanthropies</b>.
-	   <br /> <br />
-	   The home of A4I is
-     <a href="https://www.cagsiiitb.org/" target="_blank" rel="noopener noreferrer">Centre for Accessibility in the Global South (CAGS)</a> at IIIT Bangalore.
+	   <br /> <br /> 
+	   The home of A4I is 
+     <a href="https://www.cagsiiitb.org/" target="_blank" rel="noopener noreferrer">Center for Accessibility in the global south (CAGS)</a> at IIIT Bangalore.
           </p>
           <div class="spotlight-photo">
             <img src="./Images/Content-images/Launch_Group_Photo.jpg" alt="Spotlight Photograph Placeholder">
@@ -504,122 +454,160 @@
 -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const menuBtn   = document.querySelector(".menu-toggle");
-  const navLinks  = document.querySelector(".nav-links");
-  const contentDiv = document.getElementById("content");
-  const bc         = document.querySelector(".breadcrumb");
-  const defaultHTML  = contentDiv.innerHTML;
-  const defaultTitle = document.title;
-  const btn = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".nav-links");
+  // —— cache important DOM nodes ——
+  const navLinks    = document.querySelector(".nav-links");
+  const contentDiv  = document.getElementById("content");
+  const bcContainer = document.querySelector(".breadcrumb");
+  const defaultHTML = contentDiv.innerHTML;
+  const defaultTitle= document.title;
 
-  // 1) Hamburger toggle on mobile
-  btn.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
+  // —— 1) NAV-WRAP DETECTION SETUP —— 
+  // create a hidden, no-wrap clone to get the true one-line height
+  const clone = navLinks.cloneNode(true);
+  Object.assign(clone.style, {
+    position:    "absolute",
+    visibility:  "hidden",
+    whiteSpace:  "nowrap",
+    width:       "auto",
+    top:         "0",
+    left:        "0",
   });
+  document.body.appendChild(clone);
+  const singleLineHeight = clone.clientHeight;
+  document.body.removeChild(clone);
 
-  // 2) Click-delegation for nav + footer
-  document.addEventListener("click", e => {
-    const a = e.target.closest("a.nav-link, a.footer-link");
-    if (!a) return;
-
-    // 2a) submenu-parent?
-    const submenu = a.nextElementSibling;
-    if (submenu && submenu.classList.contains("dropdown-menu")) {
-      e.preventDefault();
-      const li = a.parentElement;
-      // close siblings
-      document
-        .querySelectorAll(".nav-links li.submenu-open")
-        .forEach(x => x !== li && x.classList.remove("submenu-open"));
-      li.classList.toggle("submenu-open");
-      return;  // don’t load content yet
-    }
-
-    // 2b) leaf or simple nav-link
-    // collapse any open submenu
-    document
-      .querySelectorAll(".nav-links li.submenu-open")
-      .forEach(li => li.classList.remove("submenu-open"));
-
-    const href = a.getAttribute("href");
-    if (!href.startsWith("#")) {
-      // external link: let it go (e.g. mailto, https)
-      return;
-    }
-
-    e.preventDefault();
-    // mobile: only close the entire menu once a leaf is clicked
-    if (navLinks.classList.contains("active")) {
-      navLinks.classList.remove("active");
-    }
-
-    const hash    = href.slice(1);
-    const section = a.dataset.parent || a.dataset.section || "";
-
-    if (!hash) {
-      // Home
-      contentDiv.innerHTML = defaultHTML;
-      document.title       = defaultTitle;
-      renderBreadcrumb("", "Home");
-      history.pushState({}, "", "#");
+  function checkNavWrap() {
+    const currH = navLinks.clientHeight;
+    if (currH > singleLineHeight) {
+      document.body.classList.add("nav-wrapped");
     } else {
-      loadPage(hash, section);
-      history.pushState({ hash, section }, "", "#"+hash);
+      document.body.classList.remove("nav-wrapped");
     }
-  });
-
-  // 3) Back/forward popstate
-  window.addEventListener("popstate", e => {
-    const state = e.state || {};
-    if (!location.hash) {
-      contentDiv.innerHTML = defaultHTML;
-      document.title       = defaultTitle;
-      renderBreadcrumb("", "Home");
-    } else {
-      loadPage(location.hash.slice(1), state.section || "");
-    }
-    // hide mobile menu on navigation
-    navLinks.classList.remove("active");
-  });
-
-  // 4) Initial load if landing with a hash
-  if (location.hash) {
-    const h = location.hash.slice(1);
-    const link = document.querySelector(`a[href="#${h}"]`);
-    const sect = link?.dataset.parent || link?.dataset.section || "";
-    loadPage(h, sect);
-  } else {
-    renderBreadcrumb("", "Home");
   }
 
-  // *** Helper functions ***
+  // re-run on resize & orientationchange
+  window.addEventListener("resize", checkNavWrap);
+  window.addEventListener("orientationchange", checkNavWrap);
 
+  // —— 2) BREADCRUMB RENDERER —— 
+  function renderBreadcrumb(section, page) {
+    bcContainer.innerHTML = `
+      <a href="#" class="nav-link">Home</a><span>/</span>
+      ${ section 
+         ? `<a href="#${section.toLowerCase().replace(/\s+/g,"-")}" class="nav-link">${section}</a><span>/</span>`
+         : "" }
+      <span>${page}</span>`;
+  }
+
+  // —— 3) DYNAMIC LOADER —— 
   async function loadPage(hash, section) {
     try {
       const res  = await fetch(`${hash}.html`);
       if (!res.ok) throw new Error("HTTP "+res.status);
       const text = await res.text();
-      const doc  = new DOMParser().parseFromString(text,"text/html");
+      const doc  = new DOMParser().parseFromString(text, "text/html");
       const frag = doc.getElementById("content");
-      if (!frag) throw new Error(`#content missing in ${hash}.html`);
+      if (!frag) throw new Error("#content missing in "+hash+".html");
 
+      // replace content & update title
       contentDiv.innerHTML = frag.innerHTML;
-      document.title = doc.querySelector("title")?.innerText || hash;
-      renderBreadcrumb(section, document.title || hash);
-    } catch(err) {
+      const pageTitle = doc.querySelector("title")?.innerText || hash;
+      document.title = pageTitle;
+      renderBreadcrumb(section, pageTitle);
+
+      // **only call wrap-check here** (no other calls elsewhere)
+      checkNavWrap();
+    }
+    catch(err) {
       console.error("Loader error:", err);
     }
   }
 
-  function renderBreadcrumb(section, page) {
-    const homeLink = `<a href="#" class="nav-link">Home</a><span>/</span>`;
-    const sectionCrumb = section
-      ? `<a href="#${section.toLowerCase().replace(/\s+/g,"-")}" class="nav-link">${section}</a><span>/</span>`
-      : "";
-    bc.innerHTML = homeLink + sectionCrumb + `<span>${page}</span>`;
+  // —— 4) GLOBAL loadPage PATCH (for any direct calls) —— 
+  // ensures checkNavWrap runs after any loadPage usage
+  if (typeof window.loadPage === "function") {
+    const orig = window.loadPage;
+    window.loadPage = async (...args) => {
+      await orig.apply(this, args);
+      checkNavWrap();
+    };
+  } else {
+    window.loadPage = loadPage;
   }
-});                               
+
+  // —— 5) CLICK DELEGATION for header & footer links —— 
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a.nav-link, a.footer-link");
+    if (!a) return;
+    const href = a.getAttribute("href");
+    if (!href.startsWith("#")) return; // external links open normally
+
+    e.preventDefault();
+    const hash    = href.slice(1);
+    const section = a.dataset.parent || a.dataset.section || "";
+
+    if (hash === "") {
+      // Home: restore defaults
+      contentDiv.innerHTML = defaultHTML;
+      document.title      = defaultTitle;
+      renderBreadcrumb("", "Home");
+      history.pushState({}, "", "#");
+      checkNavWrap();
+    } else {
+      loadPage(hash, section);
+      history.pushState({ hash, section }, "", "#"+hash);
+    }
+
+  });
+
+  // —— 6) HANDLE back/forward —— 
+  window.addEventListener("popstate", e => {
+    const state = e.state || {};
+    if (!location.hash) {
+      // home
+      contentDiv.innerHTML = defaultHTML;
+      document.title      = defaultTitle;
+      renderBreadcrumb("", "Home");
+      checkNavWrap();
+    } else {
+      const hash    = location.hash.slice(1);
+      const section = state.section || "";
+      loadPage(hash, section);
+    }
+  });
+
+  // —— 7) INITIAL LOAD IF HASH EXISTS —— 
+  if (location.hash) {
+    const hash = location.hash.slice(1);
+    // pick up section via data-section or data-parent
+    const link = document.querySelector(`a[href="#${hash}"]`);
+    const section = link?.dataset.parent || link?.dataset.section || "";
+    loadPage(hash, section);
+  } else {
+    // initial “Home” crumb
+    renderBreadcrumb("", "Home");
+    // initial wrap-check
+    checkNavWrap();
+  }
+  // ——— hamburger menu toggle ———
+  const menuBtn = document.querySelector('.menu-toggle');
+  const navList = document.querySelector('.nav-links');
+    if (menuBtn && navList) {
+      menuBtn.addEventListener('click', () => {
+        navList.classList.toggle('active');
+    })
+    }
+  });
+  // Auto-collapse hamburger (and any open dropdowns) on any nav-link click
+  document.querySelectorAll(".nav-links a.nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+      // collapse the main menu
+      document.querySelector(".nav-links")?.classList.remove("active");
+      // hide any open dropdown panels (if you’ve been toggling them inline)
+      document.querySelectorAll(".dropdown-menu")
+        .forEach(menu => menu.style.display = "none");
+    });
+})                                        
 </script>
 
 <!-- FOOTER -->
