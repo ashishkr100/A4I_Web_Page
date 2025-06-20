@@ -48,34 +48,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 
-  body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: #333; display: flex; flex-direction: column; min-height: 100vh; }
 
     /* HEADER & NAVIGATION */
     header { background: var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-    nav { 
-        position:relative;
-        background-color: var(--primary-color); 
-        color: var(--text-light); 
-        font-size: 1rem; 
-        font-weight: 500; 
-        line-height: 1.5; 
-        height: 80px;
-        max-width: 1200px;
-        margin: 0 auto; 
-        padding: 10px 20px; 
-        display: flex; 
-        align-items: center; 
-        justify-content: space-between;
-    }
-
-    .logo img { height: 60px; width: auto; display: block; }
-
-    
-    .nav-links { list-style: none; display: flex; gap: 4px 20px; flex-wrap: wrap; overflow: visible;} 
+    nav { max-width: 1200px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .logo img { height: 60px; width: auto; }
+    .nav-links { list-style: none; display: flex; gap: 4px; flex-wrap: wrap; }
     .nav-links li { position: relative; }
     .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: background var(--transition-speed), transform var(--transition-speed); text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; }
     .nav-links a:hover { background-color: rgba(255,102,0,0.2); transform: translateY(-2px); }
-    .dropdown-menu { display: none; position: absolute; margin-top: 4px; top: 100%; left: 0; margin-top: 4px; z-index: 1000; background-color: var(--secondary-color); border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); list-style: none; padding: 8px 0; min-width: 160px; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background-color: var(--secondary-color); border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); list-style: none; padding: 8px 0; min-width: 160px; }
     .dropdown-menu li a { display: block; color: var(--text-light); padding: 8px 16px; white-space: nowrap; transition: background var(--transition-speed); }
     .dropdown-menu li a:hover { background-color: var(--primary-color); }
     .nav-links li:hover > .dropdown-menu { display: block; }
@@ -93,21 +76,10 @@
     .logo-title-container img { max-height: 60px; width: auto; }
     .hero-container h1 { font-size: 2.5rem; color: var(--primary-color); margin: 0; }
     .intro { font-size: 1.125rem; margin: 20px auto; max-width: 800px; line-height: 1.6; color: #444; }
-    .spotlight-photo { margin: 30px 0 auto; }
+    .spotlight-photo { margin: 30px 0; }
     .spotlight-photo img { width: 100%; max-width: 800px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .btn {
-      display: inline-block;    /* inline-block keeps it only as wide as its content */
-      margin: 20px 0 0;         /* top 20px, no left/right margins */
-      padding: 12px 28px;
-      background-color: #800000;
-      color: var(--text-light);
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 4px;
-      transition: background var(--transition-speed);
-    }
-    .btn:hover { background-color: #660000; }
-    
+    .btn { display: inline-block; margin-top: 20px; padding: 12px 28px; background-color: #500000; color: var(--text-light); text-decoration: none; font-weight: 600; border-radius: 4px; transition: background var(--transition-speed); }
+    .btn:hover { background-color: #e65c00; }
 
     /* FOOTER */
     footer { background-color: var(--primary-color); color: var(--text-light); padding: 40px 20px; }
@@ -128,235 +100,157 @@
     .footer-contact a { color: var(--text-light) !important; text-decoration: none; }
     .footer-contact span.icon { margin-right: 8px; font-size: 1.2rem; color: var(--text-light); }
 
-    /* hide the toggle on desktop */
+    .hero-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-container h1 {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-container .btn {
+      display: inline-block;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    /* Hamburger menu icon (hidden on desktop) */
     .menu-toggle {
       display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 38px;
+      height: 38px;
       background: none;
       border: none;
       cursor: pointer;
-      padding: 8px;
+      z-index: 1101;
+      margin-left: 8px;
     }
 
-    /* style the three bars */
     .menu-toggle span {
       display: block;
-      width: 25px;
+      width: 26px;
       height: 3px;
       background: var(--text-light);
       margin: 4px 0;
-      transition: transform 0.2s ease;
-    }
-    /* DESKTOP */
-    @media (min-width: 769px) {
-      .hero-container { text-align: center; }
-      .logo-title-container { justify-content: center; }
-      .hero-container h1 { font-size: 3rem; }
-      .intro { font-size: 1.25rem; }
-      .spotlight-photo img { max-width: 100%; height: auto; }
-      .btn { font-size: 1.125rem; margin: 20px auto 0; }
-
-      body.nav-wrapped .nav-links a.nav-link {
-        padding-top: 4px;
-        padding-bottom: 4px;
-        line-height: 1.2;
-        text-indent: 0; /* no indent */
-        text-align: left !important;
-        white-space: normal;
-      }
-      body.nav-wrapped .nav-links {
-        gap: 4px !important; /* shrink the space between rows */
-        flex-wrap: wrap !important;
-        justify-content: flex-start !important;
-        align-content: flex-start !important;
-      }
-      body.nav-wrapped .nav-links li:hover > .dropdown-menu,
-      body.nav-wrapped .nav-links li:focus-within > .dropdown-menu {
-        display: block;
-      }
-      body.nav-wrapped .dropdown-menu li a {
-        display: block;
-        padding: 8px 16px;
-        margin: 0 8px;
-        white-space: normal;
-        font-size: 0.95rem;
-        line-height: 1.4;
-      }
-
-      /* make sure the parent <nav> can expand to show all items */
-      header nav {
-        /*display: flex;*/
-        flex-direction: row;     /* keep the toggle + the menu side by side */
-        align-items: center;     /* center each line vertically */
-        /*height: 80px !important; /* fixed height for desktop */
-        /*overflow: visible !important;*/
-      }
-      .nav-links {
-        display: flex;           /* show links in a row */
-        flex-wrap: nowrap;       /* no wrapping */
-        max-height: 80px;        /* allow full height */
-        overflow: visible;       /* no scrollbars */
-      
-      }
-      .nav-links li {
-        position: relative;      /* needed for dropdowns */
-      }
+      border-radius: 2px;
+      transition: 0.3s;
     }
 
-    /* RESPONSIVE: tablets & small devices (≤768px) */
-    @media (max-width: 768px) {
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    background: var(--primary-color);
+    flex-direction: column;
+    gap: 0;
+    z-index: 1100;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    animation: fadeInMenu 0.25s;
+  }
+  .nav-links.active {
+    display: flex;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+  .nav-links li {
+    width: 100%;
+  }
+  .nav-links > li > a {
+    padding: 16px 18px;
+    font-size: 1.1rem;
+    border-radius: 0;
+  }
+  .nav-links > li {
+    margin-bottom: 8px;  /* try 6px if you want less, or 10px for more */
+  }
+  .nav-links > li:last-child {
+    margin-bottom: 0;
+  }
+  /* Main content padding */
+  #content,
+  main,
+  section.hero,
+  .hero-container,
+  .breadcrumb {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .dropdown-menu {
+    display: none;
+    position: static !important;
+    background: var(--secondary-color);
+    border-radius: 0 0 8px 8px;
+    box-shadow: none;
+    margin: 4px 0;
+    padding: 0;
+  }
+  .nav-links li.show-dropdown > .dropdown-menu {
+    display: block;
+    animation: fadeInMenu 0.2s;
+  }
+  /* Caret/arrow for submenus (optional) */
+  .nav-links li.has-dropdown > a::after {
+    content: " ▼";
+    font-size: 0.9em;
+    color: #fff;
+  }
 
-      /* show hamburger, hide normal links */
-      .menu-toggle {
-        display: block;
-      }
+  .dropdown-menu li a {
+    margin-left: 4px;     /* slight indent */
+    padding-left: 24px;   /* keep or adjust as desired */
+  }
+  /* Animate mobile menu */
+  @keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(-8px);}
+    to { opacity: 1; transform: none;}
+  }
+}
 
-      /* 1) Reduce the gap between stacked items */
-      .nav-links {
-        display: none;              /* hide by default */
-        flex-direction: column;     /* stack vertically when shown */
-        gap: 4px;
-        width: 100%;
-        background: var(--primary-color);
-        max-height: none !important;
-        overflow: visible !important;
-      }
-      /* when .active is added, un-hide */
-      .nav-links.active {
-        display: flex !important;     /* show when .active is added */
-        max-height: none;             /* clear any height limit */
-      }
-      .nav-links li {
-        width: 100%;            /* full-width buttons */
-      }
-      .nav-links a.nav-link {
-        display: block;
-        padding: 4px 12px;      /* tiny top/bottom padding */
-        line-height: 1.2;       /* no extra leading */
-        white-space: normal;    /* allow wrap */
-        text-align: left;
-      }
-      /* submenu becomes part of flow */
-      .dropdown-menu {
-        position: static !important;
-        width: 100% !important;
-        margin: 4px 0;
-        display: none;
-      }
-      .nav-links li:hover > .dropdown-menu,
-      .nav-links li:focus-within > .dropdown-menu {
-        display: block;
-      }
+  /* DESKTOP */
+  @media (min-width: 769px) {
+    .hero-container { text-align: left; }
+    .logo-title-container { justify-content: flex-start; }
+    .hero-container h1 { font-size: 3rem; }
+    .intro { font-size: 1.25rem; }
+    .spotlight-photo img { max-width: 100%; height: auto; }
+    .btn { font-size: 1.125rem; padding: 14px 32px; }
+  }
 
-      /* 3) Submenu links: wrapped, padded, legible */
-      .dropdown-menu li a {
-        display: block;
-        padding: 8px 16px;
-        margin: 0 8px;
-        white-space: normal;
-        font-size: 0.95rem;
-        line-height: 1.4;
-      }
-      .dropdown-menu li a:hover {
-        background: var(--primary-color);
-      }
-
-      /* 4) Breadcrumb, hero, content padding */
-      .breadcrumb {
-        padding: 8px 10px;
-        flex-wrap: wrap;
-      }
-      .hero {
-        padding: 60px 10px;
-      }
-      .spotlight-photo img {
-        width: 100%;
-        height: auto;
-      }
-      #content,
-      #content section {
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-      #content img {
-        max-width: 100%;
-        height: auto;
-      }
-      #content hr {
-        margin: 24px 0;
-      }
-
-      /* 5) Footer stack + padding */
-      .footer-container {
-        flex-direction: column;
-        padding: 0 10px;
-      }
-      .footer-links ul {
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      /* 6) Force long words/links to wrap */
-      body,
-      body * {
-        word-wrap: break-word;
-        word-break: break-word;
-      }
-      /* 7) Full-width nav links. Avoid misalignment during wrap */
-      .nav-links a.nav-link {
-        display: block;
-        width: 100%;
-        padding: 8px 16px;     /* horizontal padding for the block */
-        text-indent: 0;        /* no indent */
-        text-align: left;      /* left-align text */
-        white-space: normal;   /* allow wrapping */
-      }
-      /* make absolutely sure the menu can grow to show all items */
-      .nav-links,
-      .nav-links.active {
-        max-height: none      !important;
-        overflow: visible     !important;
-      }
-      /* also allow the parent <nav> to expand if needed */
-      header nav {
-        display: flex;
-        flex-direction: column;     /* stack the toggle + the menu */
-        align-items: flex-start;    /* don’t center each line */
-        height: auto !important;    /* override any fixed height left over */
-        overflow: visible !important;
-      }
-    }    
     /* Accessibility Enhancements */
     a:focus, button:focus {
       outline: 2px solid var(--accent-color);
       outline-offset: 2px;
     }
-
+    body.nav-wrapped .nav-links li {width: 100%;}
     /* ==========================================================================
        NAV-WRAPPED OVERRIDES
        - Drop these in as the *last* lines of your <style> block
        - They will override any desktop absolute‐positioning once body.nav-wrapped is set
        ========================================================================== */
     body.nav-wrapped .dropdown-menu {
-        position: static !important;
-        z-index: auto !important;
-        width: 100% !important;
-        background-color: var(--secondary-color);
-        margin: 4px 0;
-        padding: 8px 0;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        display: none;
+      position: static !important;
+      z-index: auto !important;
+      width: 100% !important;
+      background-color: var(--secondary-color);
+      margin: 4px 0;
+      padding: 8px 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: none;
     }
     
-    /* NAV-WRAPPED: tighter spacing */
-    body.nav-wrapped .nav-links {
-      gap: 4px !important;           /* shrink the space between rows */
-    }
-    body.nav-wrapped .nav-links a.nav-link {
-      padding: 4px 12px !important;  /* 4px top/bottom, 12px left/right */
-      line-height: 1.2 !important;   /* collapse any extra line height */
-      text-indent: 0 !important;
-    }
     body.nav-wrapped .nav-links li:hover > .dropdown-menu,
     body.nav-wrapped .nav-links li:focus-within > .dropdown-menu {
       display: block;
@@ -369,12 +263,6 @@
       font-size: 0.95rem;
       line-height: 1.4;
     }
-    /* force the submenu open whenever we’ve toggled the class */
-    .nav-links li.submenu-open > .dropdown-menu {
-      display: block !important;
-    }
-    .dropdown-menu { display: none; position: absolute; margin-top: 4px; top: 100%; left: 0; margin-top: 4px; z-index: 1000; background-color: var(--secondary-color); border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); list-style: none; padding: 8px 0; min-width: 160px; }
-
   </style>
 </head>
 <body>
@@ -383,69 +271,59 @@
   <header>
     <nav>
       <a href="#" class="logo">
-        <div class="logo-container">
         <img src="./Images/Logo/Final-a4i-logo-Inverse-cropped.png" alt="A4I Logo">
-        </div>
       </a>
-      <!-- ► Hamburger toggle, *in* your HTML, *not* in the <style> block -->
-      <button class="menu-toggle" aria-label="Toggle menu">
+      <button class="menu-toggle" aria-label="Open main menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
-
       <ul class="nav-links">
         <li><a href="#about" class="nav-link">About</a></li>
-        <li>
-          <a href="#partners-projects"
-            class="nav-link"
-            data-section="Partners & Projects">
-            Partners & Projects
-          </a>
+      <li class="has-dropdown">
+        <a href="#partners-projects"
+          class="nav-link"
+          data-section="Partners & Projects">
+          Partners & Projects
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#iiitb-microsoft"
+              class="nav-link"
+              data-parent="Partners & Projects"
+              data-section="IIITB & Microsoft">
+              IIITB & Microsoft
+            </a>
+          </li>
+          <li>
+            <a href="#domain-partners-projects"
+              class="nav-link"
+              data-parent="Partners & Projects"
+              data-section="Domain Partners & Projects">
+              Domain Partners & Projects
+            </a>
+          </li>
+        </ul>
+      </li>
+        <li><a href="#news-events" class="nav-link">News &amp; Events</a></li>
+        <li><a href="#research" class="nav-link">Research</a></li>
+        <li><a href="#blogs" class="nav-link">Blogs</a></li>
+        <li class="has-dropdown">
+          <a href="#our-team" class="nav-link" data-section="Our Team">Our Team</a>
           <ul class="dropdown-menu">
             <li>
-              <a href="#iiitb-microsoft"
-                class="nav-link"
-                data-parent="Partners & Projects"
-                data-section="IIITB & Microsoft">
-                IIITB & Microsoft
+              <a href="#microsoft-team" class="nav-link" data-parent="Our Team" data-section="Microsoft Team">
+                Microsoft
               </a>
             </li>
             <li>
-              <a href="#domain-partners-projects"
-                class="nav-link"
-                data-parent="Partners & Projects"
-                data-section="Domain Partners & Projects">
-                Domain Partners & Projects
-            </a>
-        </li>
-        </ul>
-        </li>
-          <li><a href="#news-events" class="nav-link">News &amp; Events</a></li>
-          <li><a href="#research" class="nav-link">Research</a></li>
-          <li><a href="#blogs" class="nav-link">Blogs</a></li>
-          <li>
-            <a href="#our-team" class="nav-link" data-section="Our Team">Our Team</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="#microsoft-team"
-                  class="nav-link"
-                  data-parent="Our Team"
-                  data-section="Microsoft Team">
-                  Microsoft Team
-                </a>
-              </li>
-              <li>
-                <a href="#iiitb-team"
-                  class="nav-link"
-                  data-parent="Our Team"
-                  data-section="IIITB Team">
-                  IIITB Team
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+              <a href="#iiitb-team" class="nav-link" data-parent="Our Team" data-section="IIITB Team">
+                IIITB
+              </a>
+            </li>
+          </ul>
+        </li>>
+      </ul>
     </nav>
   </header>
 
@@ -483,9 +361,9 @@
             A4I (AI Innovation & Inclusion Initiative) is a collaboration between <b>Microsoft and IIIT Bangalore</b>. Our mission is to leverage cutting-edge artificial intelligence to drive inclusion and sustainable impact for underserved communities worldwide. We aim to evolve, engineer, and deploy large-scale <b>Digital Public Goods</b>.
            <br /> <br />
 	   A4I is designed to nurture a strong ecosystem for AI-led innovation that prioritizes inclusive and sustainable development. With support and funding by <b>Microsoft Philanthropies</b>.
-	   <br /> <br />
-	   The home of A4I is
-     <a href="https://www.cagsiiitb.org/" target="_blank" rel="noopener noreferrer">Centre for Accessibility in the Global South (CAGS)</a> at IIIT Bangalore.
+	   <br /> <br /> 
+	   The home of A4I is 
+     <a href="https://www.cagsiiitb.org/" target="_blank" rel="noopener noreferrer">Center for Accessibility in the global south (CAGS)</a> at IIIT Bangalore.
           </p>
           <div class="spotlight-photo">
             <img src="./Images/Content-images/Launch_Group_Photo.jpg" alt="Spotlight Photograph Placeholder">
@@ -496,130 +374,112 @@
     </div>
   </main>
 
-<!--
-  DYNAMIC CONTENT & NAV-WRAP HANDLER
-  - In-page loader for header/footer links (fetches and injects #content HTML)
-  - History & breadcrumb management (pushState, popstate)
-  - Responsive nav-wrap detection (single-line clone method + body.nav-wrapped CSS toggle)
--->
+<!-- DYNAMIC LOADER SCRIPT (Option 2, with Home restore) -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const menuBtn   = document.querySelector(".menu-toggle");
-  const navLinks  = document.querySelector(".nav-links");
-  const contentDiv = document.getElementById("content");
-  const bc         = document.querySelector(".breadcrumb");
-  const defaultHTML  = contentDiv.innerHTML;
+  const contentDiv  = document.getElementById("content");
+  const bcContainer = document.querySelector(".breadcrumb");
+  const defaultHTML = contentDiv.innerHTML;
   const defaultTitle = document.title;
-  const btn = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".nav-links");
 
-  // 1) Hamburger toggle on mobile
-  btn.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
+  // Renders: Home / … optional Section / Page
+  function renderBreadcrumb(section, page) {
+    bcContainer.innerHTML = "";
 
-  // 2) Click-delegation for nav + footer
-  document.addEventListener("click", e => {
-    const a = e.target.closest("a.nav-link, a.footer-link");
-    if (!a) return;
+    // 1) Home link
+    bcContainer.insertAdjacentHTML("beforeend", `
+      <a href="#" class="nav-link" data-section="">
+        <!-- (SVG home-icon here) --> Home
+      </a>
+      <span>/</span>
+    `);
 
-    // 2a) submenu-parent?
-    const submenu = a.nextElementSibling;
-    if (submenu && submenu.classList.contains("dropdown-menu")) {
-      e.preventDefault();
-      const li = a.parentElement;
-      // close siblings
-      document
-        .querySelectorAll(".nav-links li.submenu-open")
-        .forEach(x => x !== li && x.classList.remove("submenu-open"));
-      li.classList.toggle("submenu-open");
-      return;  // don’t load content yet
+    // 2) Section (if any)
+    if (section) {
+      const hash = section.trim().toLowerCase().replace(/\s+/g,"-");
+      bcContainer.insertAdjacentHTML("beforeend", `
+        <a href="#${hash}" class="nav-link" data-section="${section}">
+          ${section}
+        </a>
+        <span>/</span>
+      `);
     }
 
-    // 2b) leaf or simple nav-link
-    // collapse any open submenu
-    document
-      .querySelectorAll(".nav-links li.submenu-open")
-      .forEach(li => li.classList.remove("submenu-open"));
-
-    const href = a.getAttribute("href");
-    if (!href.startsWith("#")) {
-      // external link: let it go (e.g. mailto, https)
-      return;
-    }
-
-    e.preventDefault();
-    // mobile: only close the entire menu once a leaf is clicked
-    if (navLinks.classList.contains("active")) {
-      navLinks.classList.remove("active");
-    }
-
-    const hash    = href.slice(1);
-    const section = a.dataset.parent || a.dataset.section || "";
-
-    if (!hash) {
-      // Home
-      contentDiv.innerHTML = defaultHTML;
-      document.title       = defaultTitle;
-      renderBreadcrumb("", "Home");
-      history.pushState({}, "", "#");
-    } else {
-      loadPage(hash, section);
-      history.pushState({ hash, section }, "", "#"+hash);
-    }
-  });
-
-  // 3) Back/forward popstate
-  window.addEventListener("popstate", e => {
-    const state = e.state || {};
-    if (!location.hash) {
-      contentDiv.innerHTML = defaultHTML;
-      document.title       = defaultTitle;
-      renderBreadcrumb("", "Home");
-    } else {
-      loadPage(location.hash.slice(1), state.section || "");
-    }
-    // hide mobile menu on navigation
-    navLinks.classList.remove("active");
-  });
-
-  // 4) Initial load if landing with a hash
-  if (location.hash) {
-    const h = location.hash.slice(1);
-    const link = document.querySelector(`a[href="#${h}"]`);
-    const sect = link?.dataset.parent || link?.dataset.section || "";
-    loadPage(h, sect);
-  } else {
-    renderBreadcrumb("", "Home");
+    // 3) Final (current page)
+    bcContainer.insertAdjacentHTML("beforeend", `<span>${page}</span>`);
   }
 
-  // *** Helper functions ***
-
+  // Fetches page, injects content, updates title & breadcrumb
   async function loadPage(hash, section) {
     try {
-      const res  = await fetch(`${hash}.html`);
+      const res = await fetch(`${hash}.html`);
       if (!res.ok) throw new Error("HTTP "+res.status);
       const text = await res.text();
       const doc  = new DOMParser().parseFromString(text,"text/html");
       const frag = doc.getElementById("content");
-      if (!frag) throw new Error(`#content missing in ${hash}.html`);
-
+      if (!frag) throw new Error("#content missing in "+hash+".html");
       contentDiv.innerHTML = frag.innerHTML;
-      document.title = doc.querySelector("title")?.innerText || hash;
-      renderBreadcrumb(section, document.title || hash);
+      const pageTitle = doc.querySelector("title")?.innerText || hash;
+      document.title = pageTitle;
+      renderBreadcrumb(section, pageTitle);
+
+      // re-run the nav-wrap check after swapping in new header
+      checkNavWrap();
+
     } catch(err) {
       console.error("Loader error:", err);
     }
   }
 
-  function renderBreadcrumb(section, page) {
-    const homeLink = `<a href="#" class="nav-link">Home</a><span>/</span>`;
-    const sectionCrumb = section
-      ? `<a href="#${section.toLowerCase().replace(/\s+/g,"-")}" class="nav-link">${section}</a><span>/</span>`
-      : "";
-    bc.innerHTML = homeLink + sectionCrumb + `<span>${page}</span>`;
+  // Click‐delegation for any nav- or footer-links
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a.nav-link, a.footer-link");
+    if (!a) return;
+    const href = a.getAttribute("href");
+    if (!href.startsWith("#")) return;  // allow external URLs, mailto, etc.
+    e.preventDefault();
+
+    const hash    = href.slice(1);
+    const section = a.dataset.parent || a.dataset.section || "";
+
+    if (!hash) {
+      // Home clicked: restore default
+      contentDiv.innerHTML = defaultHTML;
+      document.title = defaultTitle;
+      renderBreadcrumb("", "Home");
+      history.pushState({}, "", "#");
+    } else {
+      loadPage(hash, section);
+      history.pushState({hash, section}, "", "#"+hash);
+    }
+  });
+
+  // Handle back/forward
+  window.addEventListener("popstate", e => {
+    const state = e.state || {};
+    if (!location.hash) {
+      contentDiv.innerHTML = defaultHTML;
+      document.title = defaultTitle;
+      renderBreadcrumb("", "Home");
+    } else {
+      const hash    = location.hash.slice(1);
+      const section = state.section || "";
+      loadPage(hash, section);
+    }
+  });
+
+  // On initial load with a hash
+  if (location.hash) {
+    const hash = location.hash.slice(1);
+    // Try to find the link to pick up its data-section/parent
+    const link = document.querySelector(`a[href="#${hash}"]`);
+    const section = link?.dataset.parent || link?.dataset.section || "";
+    loadPage(hash, section);
+  } else {
+    // initial “Home” breadcrumb
+    renderBreadcrumb("", "Home");
   }
-});                               
+});
 </script>
 
 <!-- FOOTER -->
@@ -677,13 +537,12 @@ document.addEventListener("DOMContentLoaded", () => {
         </li>
         <li>
           <span class="icon">📞</span>
-          <a href="tel:+918041407777">+91 80 41407777</a> /
-          <a href="tel:+9128527627">28527627</a>
+          <a href="tel:+918041407777">+91 80 4140 7777</a> /
+          <a href="tel:+9128527627">2852 7627</a>
         </li>
         <li>
           <span class="icon">📍</span>
-          IIITB – Electronic City campus,<br> 
-          26/C, Electronic City,<br>
+          IIITB – Electronic City campus, 26/C, Electronics City,<br><br>
           Hosur Road, Bengaluru – 560100
         </li>
       </ul>
@@ -693,71 +552,72 @@ document.addEventListener("DOMContentLoaded", () => {
 
     
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", function() {
     const navLinks = document.querySelector('.nav-links');
-    if (!navLinks) {
-      console.error('[NavWrap] .nav-links not found');
-      return;
-    }
+    const menuBtn  = document.querySelector('.menu-toggle');
+    let lastOpenedDropdown = null;
 
-    // 1) Create a hidden clone forced into one line to get the true single-row height
-    const clone = navLinks.cloneNode(true);
-    Object.assign(clone.style, {
-      position: 'absolute',
-      visibility: 'hidden',
-      whiteSpace: 'nowrap',
-      width: 'auto',
-      top: '0',
-      left: '0',
-    });
-    document.body.appendChild(clone);
-    const singleLineHeight = clone.clientHeight;
-    document.body.removeChild(clone);
-    console.log('[NavWrap] singleLineHeight =', singleLineHeight);
+    // Hamburger: toggle menu open/close
+    menuBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
 
-    // 2) Compare live height against that baseline
-    function checkNavWrap() {
-      const currHeight = navLinks.clientHeight;
-      console.log('[NavWrap] currHeight =', currHeight);
-      if (currHeight > singleLineHeight) {
-        if (!document.body.classList.contains('nav-wrapped')) {
-          document.body.classList.add('nav-wrapped');
-          console.log('[NavWrap] ➕ nav-wrapped added');
-        }
-      } else {
-        if (document.body.classList.contains('nav-wrapped')) {
-          document.body.classList.remove('nav-wrapped');
-          console.log('[NavWrap] ➖ nav-wrapped removed');
-        }
+      // Always close all submenus when main menu is closed
+      if (!navLinks.classList.contains('active')) {
+        navLinks.querySelectorAll('.show-dropdown').forEach(li => li.classList.remove('show-dropdown'));
+        lastOpenedDropdown = null;
       }
-    }
+    });
 
-    // 3) Run initially, on resize/orientationchange
-    checkNavWrap();
-    window.addEventListener('resize', checkNavWrap);
-    window.addEventListener('orientationchange', checkNavWrap);
+    // Collapse menu after clicking a header item with no dropdown
+    navLinks.addEventListener('click', function(e) {
+      const link = e.target.closest('a.nav-link');
+      if (!link) return;
 
-    // 4) Also re-run after any dynamic loadPage swaps (if loadPage is defined)
-    if (typeof window.loadPage === 'function') {
-      const originalLoad = window.loadPage;
-      window.loadPage = async function(...args) {
-        await originalLoad.apply(this, args);
-        checkNavWrap();
-      };
-    }
+      const li = link.parentElement;
+      const hasDropdown = li.classList.contains('has-dropdown');
+
+      // If submenu header: show/hide dropdown, don't close menu
+      if (hasDropdown) {
+        e.preventDefault();
+        // Toggle current, close others
+        if (li.classList.contains('show-dropdown')) {
+          li.classList.remove('show-dropdown');
+          lastOpenedDropdown = null;
+        } else {
+          navLinks.querySelectorAll('.show-dropdown').forEach(x => x.classList.remove('show-dropdown'));
+          li.classList.add('show-dropdown');
+          lastOpenedDropdown = li;
+        }
+        return;
+      }
+
+      // If simple header: close menu (for mobile)
+      if (window.innerWidth <= 768) {
+        navLinks.classList.remove('active');
+        navLinks.querySelectorAll('.show-dropdown').forEach(x => x.classList.remove('show-dropdown'));
+        lastOpenedDropdown = null;
+      }
+    });
+
+    // On window resize or hamburger open, always collapse all dropdowns
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        navLinks.classList.remove('active');
+        navLinks.querySelectorAll('.show-dropdown').forEach(x => x.classList.remove('show-dropdown'));
+      }
+    });
+
+    // Optional: collapse open submenus on next hamburger open
+    menuBtn.addEventListener('click', function() {
+      if (navLinks.classList.contains('active')) {
+        // Remove all open submenus
+        navLinks.querySelectorAll('.show-dropdown').forEach(x => x.classList.remove('show-dropdown'));
+        lastOpenedDropdown = null;
+      }
+    });
   });
-    document.querySelector('.menu-toggle').addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.toggle('active');
-    });
   </script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const btn = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('.nav-links');
-      if (!btn || !nav) return;
-      btn.addEventListener('click', () => nav.classList.toggle('active'));
-    });
-  </script>
 </body>
 </html>
