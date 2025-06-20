@@ -181,12 +181,16 @@
   }
   /* Main content padding */
   #content,
-  main,
-  section.hero,
-  .hero-container,
-  .breadcrumb {
-    padding-left: 14px;
-    padding-right: 14px;
+  .hero-container .intro {
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: justify;
+  }
+  
+  .hero-container h1,
+  .hero-container .btn {
+    text-align: center; /* Keeps title and button centered */
+  }
   }
   .dropdown-menu {
     display: none;
@@ -196,6 +200,10 @@
     box-shadow: none;
     margin: 4px 0;
     padding: 0;
+  }
+  .nav-links > li.has-dropdown > a:focus {
+    outline: none !important;
+    box-shadow: none !important;
   }
   .nav-links li.show-dropdown > .dropdown-menu {
     display: block;
