@@ -3,82 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <title>Microsoft Team</title>
+</head>
 <body>
-  <!-- Fragment wrapper: loader injects this into #content -->
-  <div id="content">
-    <!-- Our Team Core Content -->
-    <section class="team-section">
-      <h2 style="text-align:center; margin-bottom:20px;">Meet Our Team</h2>
-      <div class="team-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:20px;">
-
-        <!-- Member 1 -->
-        <div class="member" style="border:1px solid #ccc; padding:16px; border-radius:8px; position:relative;">
-          <button class="info-btn" aria-label="Toggle description" onclick="const d=this.parentElement.querySelector('.description');d.style.display=(d.style.display==='none'?'block':'none');" style="position:absolute; top:8px; right:8px;">ℹ️</button>
-          <img src="./Images/our-team-images/Manju.jpg" alt="Manju Dhasmana">
-          <h3>Manju Dhasmana</h3>
-          <p class="title">Lead – Philanthropies and CSR, Microsoft</p>
-          <div class="description">
-            Content to be updated
-          </div>
+<div id="content">
+  <section style="max-width:1000px; margin:40px auto; font-family:'Inter',Arial,sans-serif;">
+    <h2 style="text-align:center; margin-bottom:32px;">Microsoft Team</h2>
+    <div class="team-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:28px;">
+      <!-- Manju Dhasmana -->
+      <div class="member" style="border:1.5px solid #d4d7dc; padding:18px 14px 22px 14px; border-radius:12px; position:relative; box-shadow:0 4px 16px 0 rgba(50,50,70,0.06); background:#fff;">
+        <div style="position:relative; width:120px; height:120px; margin:0 auto 16px auto;">
+          <img src="./Images/our-team-images/Manju.jpg" alt="Manju Dhasmana"
+               style="width:120px; height:120px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+          <button class="info-btn" aria-label="Show profile"
+                  style="position:absolute; top:7px; right:7px; background:none; border:none; font-size:1.38em; cursor:pointer; z-index:2; color:#4981a1;">ℹ️</button>
         </div>
-
-        <!-- Member 2 -->
-         <div class="member" style="border:1px solid #ccc; padding:16px; border-radius:8px; position:relative;">
-          <button class="info-btn" aria-label="Toggle description" onclick="const d=this.parentElement.querySelector('.description');d.style.display=(d.style.display==='none'?'block':'none');" style="position:absolute; top:8px; right:8px;">ℹ️</button>
-          <img src="./Images/our-team-images/Manohar.jpg" alt="Manohar Swaminathan">
-          <h3>Manohar Swaminathan</h3>
-          <p class="title">Principal Researcher, Microsoft Research</p>
-          <div class="description">
-            Content to be updated
-          </div>
+        <div style="text-align:center;">
+          <a href="#" style="font-weight:700; color:#194186; text-decoration:none; font-size:1.15rem; display:inline-block; margin-bottom:2px;">Manju Dhasmana</a>
+          <div style="font-size:0.98rem; color:#555; margin-bottom:8px;">Lead – Philanthropies and CSR, Microsoft</div>
         </div>
-
-        <!-- Member 3 -->
-        <div class="member" style="border:1px solid #ccc; padding:16px; border-radius:8px; position:relative;">
-          <button class="info-btn" aria-label="Toggle description" onclick="const d=this.parentElement.querySelector('.description');d.style.display=(d.style.display==='none'?'block':'none');" style="position:absolute; top:8px; right:8px;">ℹ️</button>
-          <img src="./Images/our-team-images/Mohit.jpg" alt="Mohit Jain">
-          <h3>Mohit Jain</h3>
-          <p class="title">Principal Researcher, Microsoft Research</p>
-          <div class="description">
-            Content to be updated
-          </div>
+        <div class="profile-detail" style="display:none; margin-top:10px; font-size:0.98rem; color:#212; background:#f7fafb; border-radius:8px; padding:16px 13px 12px 13px; text-align:left;">
+          Content to be updated
         </div>
-
-        <!-- Member 4 -->
-        <div class="member" style="border:1px solid #ccc; padding:16px; border-radius:8px; position:relative;">
-          <button class="info-btn" aria-label="Toggle description" onclick="const d=this.parentElement.querySelector('.description');d.style.display=(d.style.display==='none'?'block':'none');" style="position:absolute; top:8px; right:8px;">ℹ️</button>
-          <img src="./Images/our-team-images/Rahul.jpg" alt="Rahul Singh">
-          <h3>Rahul Singh</h3>
-          <p class="title">Program Manager, Microsoft Research</p>
-          <div class="description">
-            Content to be updated
-          </div>
-        </div>
-
-        <!-- Member 5 -->
-        <div class="member" style="border:1px solid #ccc; padding:16px; border-radius:8px; position:relative;">
-          <button class="info-btn" aria-label="Toggle description" onclick="const d=this.parentElement.querySelector('.description');d.style.display=(d.style.display==='none'?'block':'none');" style="position:absolute; top:8px; right:8px;">ℹ️</button>
-          <img src="./Images/our-team-images/Tanishka.jpg" alt="Tanishka Roy">
-          <h3>Tanishka Roy</h3>
-          <p class="title">Program Manager, Microsoft</p>
-          <div class="description">
-            Content to be updated
-          </div>
-        </div>
-
-        <!-- Member 6 -->
-        <div class="member" style="border:1px solid #ccc; padding:16px; border-radius:8px; position:relative;">
-          <button class="info-btn" aria-label="Toggle description" onclick="const d=this.parentElement.querySelector('.description');d.style.display=(d.style.display==='none'?'block':'none');" style="position:absolute; top:8px; right:8px;">ℹ️</button>
-          <img src="./Images/our-team-images/Tanuja.jpg" alt="Tanuja Ganu">
-          <h3>Tanuja Ganu</h3>
-          <p class="title">Director of Research Engineering, Microsoft Research</p>
-          <div class="description">
-            Content to be updated
-          </div>
-        </div>
-
       </div>
-    </section>
-  </div>
+      <!-- Manohar Swaminathan -->
+      <div class="member" style="border:1.5px solid #d4d7dc; padding:18px 14px 22px 14px; border-radius:12px; position:relative; box-shadow:0 4px 16px 0 rgba(50,50,70,0.06); background:#fff;">
+        <div style="position:relative; width:120px; height:120px; margin:0 auto 16px auto;">
+          <img src="./Images/our-team-images/Manohar.jpg" alt="Manohar Swaminathan"
+               style="width:120px; height:120px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+          <button class="info-btn" aria-label="Show profile"
+                  style="position:absolute; top:7px; right:7px; background:none; border:none; font-size:1.38em; cursor:pointer; z-index:2; color:#4981a1;">ℹ️</button>
+        </div>
+        <div style="text-align:center;">
+          <a href="#" style="font-weight:700; color:#194186; text-decoration:none; font-size:1.15rem; display:inline-block; margin-bottom:2px;">Manohar Swaminathan</a>
+          <div style="font-size:0.98rem; color:#555; margin-bottom:8px;">Principal Researcher, Microsoft Research</div>
+        </div>
+        <div class="profile-detail" style="display:none; margin-top:10px; font-size:0.98rem; color:#212; background:#f7fafb; border-radius:8px; padding:16px 13px 12px 13px; text-align:left;">
+          Content to be updated
+        </div>
+      </div>
+      <!-- Mohit Jain -->
+      <div class="member" style="border:1.5px solid #d4d7dc; padding:18px 14px 22px 14px; border-radius:12px; position:relative; box-shadow:0 4px 16px 0 rgba(50,50,70,0.06); background:#fff;">
+        <div style="position:relative; width:120px; height:120px; margin:0 auto 16px auto;">
+          <img src="./Images/our-team-images/Mohit.jpg" alt="Mohit Jain"
+               style="width:120px; height:120px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+          <button class="info-btn" aria-label="Show profile"
+                  style="position:absolute; top:7px; right:7px; background:none; border:none; font-size:1.38em; cursor:pointer; z-index:2; color:#4981a1;">ℹ️</button>
+        </div>
+        <div style="text-align:center;">
+          <a href="#" style="font-weight:700; color:#194186; text-decoration:none; font-size:1.15rem; display:inline-block; margin-bottom:2px;">Mohit Jain</a>
+          <div style="font-size:0.98rem; color:#555; margin-bottom:8px;">Principal Researcher, Microsoft Research</div>
+        </div>
+        <div class="profile-detail" style="display:none; margin-top:10px; font-size:0.98rem; color:#212; background:#f7fafb; border-radius:8px; padding:16px 13px 12px 13px; text-align:left;">
+          Content to be updated
+        </div>
+      </div>
+      <!-- Rahul Singh -->
+      <div class="member" style="border:1.5px solid #d4d7dc; padding:18px 14px 22px 14px; border-radius:12px; position:relative; box-shadow:0 4px 16px 0 rgba(50,50,70,0.06); background:#fff;">
+        <div style="position:relative; width:120px; height:120px; margin:0 auto 16px auto;">
+          <img src="./Images/our-team-images/Rahul.jpg" alt="Rahul Singh"
+               style="width:120px; height:120px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+          <button class="info-btn" aria-label="Show profile"
+                  style="position:absolute; top:7px; right:7px; background:none; border:none; font-size:1.38em; cursor:pointer; z-index:2; color:#4981a1;">ℹ️</button>
+        </div>
+        <div style="text-align:center;">
+          <a href="#" style="font-weight:700; color:#194186; text-decoration:none; font-size:1.15rem; display:inline-block; margin-bottom:2px;">Rahul Singh</a>
+          <div style="font-size:0.98rem; color:#555; margin-bottom:8px;">Program Manager, Microsoft Research</div>
+        </div>
+        <div class="profile-detail" style="display:none; margin-top:10px; font-size:0.98rem; color:#212; background:#f7fafb; border-radius:8px; padding:16px 13px 12px 13px; text-align:left;">
+          Content to be updated
+        </div>
+      </div>
+      <!-- Tanishka Roy -->
+      <div class="member" style="border:1.5px solid #d4d7dc; padding:18px 14px 22px 14px; border-radius:12px; position:relative; box-shadow:0 4px 16px 0 rgba(50,50,70,0.06); background:#fff;">
+        <div style="position:relative; width:120px; height:120px; margin:0 auto 16px auto;">
+          <img src="./Images/our-team-images/Tanishka.jpg" alt="Tanishka Roy"
+               style="width:120px; height:120px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+          <button class="info-btn" aria-label="Show profile"
+                  style="position:absolute; top:7px; right:7px; background:none; border:none; font-size:1.38em; cursor:pointer; z-index:2; color:#4981a1;">ℹ️</button>
+        </div>
+        <div style="text-align:center;">
+          <a href="#" style="font-weight:700; color:#194186; text-decoration:none; font-size:1.15rem; display:inline-block; margin-bottom:2px;">Tanishka Roy</a>
+          <div style="font-size:0.98rem; color:#555; margin-bottom:8px;">Program Manager, Microsoft</div>
+        </div>
+        <div class="profile-detail" style="display:none; margin-top:10px; font-size:0.98rem; color:#212; background:#f7fafb; border-radius:8px; padding:16px 13px 12px 13px; text-align:left;">
+          Content to be updated
+        </div>
+      </div>
+      <!-- Tanuja Ganu -->
+      <div class="member" style="border:1.5px solid #d4d7dc; padding:18px 14px 22px 14px; border-radius:12px; position:relative; box-shadow:0 4px 16px 0 rgba(50,50,70,0.06); background:#fff;">
+        <div style="position:relative; width:120px; height:120px; margin:0 auto 16px auto;">
+          <img src="./Images/our-team-images/Tanuja.jpg" alt="Tanuja Ganu"
+               style="width:120px; height:120px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+          <button class="info-btn" aria-label="Show profile"
+                  style="position:absolute; top:7px; right:7px; background:none; border:none; font-size:1.38em; cursor:pointer; z-index:2; color:#4981a1;">ℹ️</button>
+        </div>
+        <div style="text-align:center;">
+          <a href="#" style="font-weight:700; color:#194186; text-decoration:none; font-size:1.15rem; display:inline-block; margin-bottom:2px;">Tanuja Ganu</a>
+          <div style="font-size:0.98rem; color:#555; margin-bottom:8px;">Director of Research Engineering, Microsoft Research</div>
+        </div>
+        <div class="profile-detail" style="display:none; margin-top:10px; font-size:0.98rem; color:#212; background:#f7fafb; border-radius:8px; padding:16px 13px 12px 13px; text-align:left;">
+          Content to be updated
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 </body>
 </html>

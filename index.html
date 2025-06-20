@@ -6,15 +6,14 @@
   <meta name="keywords" content="AI for Good, Digital Public Goods, ICT for Development, AI for Accessibility, AI for Inclusion, A4I Lab, Microsoft AI collaboration, IIIT Bangalore, AI social impact, Generative AI, AI in healthcare, AI for education, open source AI, public interest technology">
   <meta name="author" content="A4I Lab">
 
-  <!-- Basic Metadata & Security Headers -->
+  <!-- Essential Metadata & Security Headers -->
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="DENY" />
   <meta name="referrer" content="no-referrer" />
 
-  <!-- Updated CSP: allows inline styles, scripts, and data URIs for fonts -->
+  <!-- Content Security Policy (inline for demo; set in HTTP header for prod) -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     img-src 'self' data:;
@@ -25,8 +24,8 @@
 
   <title>A4I Welcome Page</title>
 
-  <!-- Google Fonts -->
-    <link
+  <!-- Google Fonts: Inter family -->
+  <link
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
     integrity="sha384-<THE_ACTUAL_HASH_HERE>"
@@ -34,7 +33,9 @@
   />
 
   <style>
-    /* GLOBAL VARIABLES & RESET */
+    /* =========================
+       GLOBAL VARIABLES & RESET
+       ========================= */
     :root {
       --primary-color: #333C47;
       --secondary-color: #004080;
@@ -46,78 +47,223 @@
       --transition-speed: 0.3s;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-
-    body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: #333; display: flex; flex-direction: column; min-height: 100vh; }
-
-    /* HEADER & NAVIGATION */
-    header { background: var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-    nav { max-width: 1200px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
-    .logo img { height: 60px; width: auto; }
-    .nav-links { list-style: none; display: flex; gap: 4px; flex-wrap: wrap; }
+    /* =========================
+       HEADER & NAVIGATION
+       ========================= */
+    header {
+      background: var(--primary-color);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo img {
+      height: 60px;
+      width: auto;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
     .nav-links li { position: relative; }
-    .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: background var(--transition-speed), transform var(--transition-speed); text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; }
-    .nav-links a:hover { background-color: rgba(255,102,0,0.2); transform: translateY(-2px); }
-    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background-color: var(--secondary-color); border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); list-style: none; padding: 8px 0; min-width: 160px; }
-    .dropdown-menu li a { display: block; color: var(--text-light); padding: 8px 16px; white-space: nowrap; transition: background var(--transition-speed); }
-    .dropdown-menu li a:hover { background-color: var(--primary-color); }
-    .nav-links li:hover > .dropdown-menu { display: block; }
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background var(--transition-speed), transform var(--transition-speed);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+    }
+    .nav-links a:hover {
+      background-color: rgba(255,102,0,0.2);
+      transform: translateY(-2px);
+    }
+    /* Dropdown menu styling (desktop) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--secondary-color);
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      list-style: none;
+      padding: 8px 0;
+      min-width: 160px;
+    }
+    .dropdown-menu li a {
+      display: block;
+      color: var(--text-light);
+      padding: 8px 16px;
+      white-space: nowrap;
+      transition: background var(--transition-speed);
+    }
+    .dropdown-menu li a:hover {
+      background-color: var(--primary-color);
+    }
+    .nav-links li:hover > .dropdown-menu {
+      display: block;
+    }
 
-    /* BREADCRUMB */
-    .breadcrumb { background-color: var(--breadcrumb-bg); padding: 8px 20px; display: flex; align-items: center; gap: 8px; color: var(--breadcrumb-text); }
-    .breadcrumb a { display: flex; align-items: center; text-decoration: none; color: var(--breadcrumb-text); font-weight: 500; }
-    .breadcrumb svg { width: 16px; height: 16px; fill: var(--breadcrumb-text); }
+    /* =========================
+       BREADCRUMB
+       ========================= */
+    .breadcrumb {
+      background-color: var(--breadcrumb-bg);
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--breadcrumb-text);
+    }
+    .breadcrumb a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--breadcrumb-text);
+      font-weight: 500;
+    }
+    .breadcrumb svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--breadcrumb-text);
+    }
     .breadcrumb span { color: var(--breadcrumb-text); }
 
-    /* HERO SECTION */
-    .hero { padding: 60px 20px; flex: 1; }
-    .hero-container { max-width: 1000px; margin: 0 auto; text-align: center; }
-    .logo-title-container { display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 20px; }
-    .logo-title-container img { max-height: 60px; width: auto; }
-    .hero-container h1 { font-size: 2.5rem; color: var(--primary-color); margin: 0; }
-    .intro { font-size: 1.125rem; margin: 20px auto; max-width: 800px; line-height: 1.6; color: #444; }
-    .spotlight-photo { margin: 30px 0; }
-    .spotlight-photo img { width: 100%; max-width: 800px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .btn { display: inline-block; margin-top: 20px; padding: 12px 28px; background-color: #500000; color: var(--text-light); text-decoration: none; font-weight: 600; border-radius: 4px; transition: background var(--transition-speed); }
-    .btn:hover { background-color: #e65c00; }
-
-    /* FOOTER */
-    footer { background-color: var(--primary-color); color: var(--text-light); padding: 40px 20px; }
-    .footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; }
-    .footer-links ul { list-style: none; display: flex; gap: 2rem; }
-    .footer-links a { color: var(--text-light); text-decoration: none; font-weight: 500; transition: color var(--transition-speed); }
-    .footer-links a:hover { color: var(--accent-color); }
-    .footer-links a svg {
-     /* 1) Remove the white box by dropping background, padding, border-radius */
-     fill: var(--text-light) !important;  /* 3) Make the icon white */
-     width: 24px;                         /* 2) Increase icon size */
-     height: 24px;                        /* 2) Increase icon size */
-     vertical-align: middle;
-     margin-right: 8px;
+    /* =========================
+       HERO SECTION
+       ========================= */
+    .hero {
+      padding: 60px 20px;
+      flex: 1;
     }
-    .footer-contact ul { list-style: none; }
-    .footer-contact li { display: flex; align-items: center; margin-bottom: 8px; }
-    .footer-contact a { color: var(--text-light) !important; text-decoration: none; }
-    .footer-contact span.icon { margin-right: 8px; font-size: 1.2rem; color: var(--text-light); }
-
     .hero-container {
+      max-width: 1000px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
+    .logo-title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .logo-title-container img {
+      max-height: 60px;
+      width: auto;
+    }
     .hero-container h1 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin: 0;
       text-align: center;
       margin-left: auto;
       margin-right: auto;
     }
-    .hero-container .btn {
+    .intro {
+      font-size: 1.125rem;
+      margin: 20px auto;
+      max-width: 800px;
+      line-height: 1.6;
+      color: #444;
+    }
+    .spotlight-photo { margin: 30px 0; }
+    .spotlight-photo img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .btn {
       display: inline-block;
+      margin-top: 20px;
+      padding: 12px 28px;
+      background-color: #500000;
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: background var(--transition-speed);
       margin-left: auto;
       margin-right: auto;
       text-align: center;
     }
-    /* Hamburger menu icon (hidden on desktop) */
+    .btn:hover { background-color: #e65c00; }
+
+    /* =========================
+       FOOTER
+       ========================= */
+    footer {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      padding: 40px 20px;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition-speed);
+    }
+    .footer-links a:hover { color: var(--accent-color); }
+    .footer-links a svg {
+      fill: var(--text-light) !important;
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    .footer-contact ul { list-style: none; }
+    .footer-contact li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .footer-contact a { color: var(--text-light) !important; text-decoration: none; }
+    .footer-contact span.icon { margin-right: 8px; font-size: 1.2rem; color: var(--text-light); }
+
+    /* =========================
+       HAMBURGER MENU (MOBILE)
+       ========================= */
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -131,7 +277,6 @@
       z-index: 1101;
       margin-left: 8px;
     }
-
     .menu-toggle span {
       display: block;
       width: 26px;
@@ -142,112 +287,112 @@
       transition: 0.3s;
     }
 
-/* Mobile styles */
-@media (max-width: 768px) {
-  .menu-toggle { display: flex; }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100vw;
-    background: var(--primary-color);
-    flex-direction: column;
-    gap: 0;
-    z-index: 1100;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-    animation: fadeInMenu 0.25s;
-  }
-  .nav-links.active {
-    display: flex;
-    max-height: 95vh;
-    overflow-y: auto;
-  }
-  .nav-links li {
-    width: 100%;
-  }
-  .nav-links > li > a {
-    padding: 16px 18px;
-    font-size: 1.1rem;
-    border-radius: 0;
-  }
-  .nav-links > li {
-    margin-bottom: 8px;  /* try 6px if you want less, or 10px for more */
-  }
-  .nav-links > li:last-child {
-    margin-bottom: 0;
-  }
-  /* Main content padding */
-  #content,
-  .hero-container .intro {
-    padding-left: 8px;
-    padding-right: 8px;
-    text-align: justify;
-  }
-  
-  .hero-container h1,
-  .hero-container .btn {
-    text-align: center; /* Keeps title and button centered */
-  }
-  }
-  .dropdown-menu {
-    display: none;
-    position: static !important;
-    background: var(--secondary-color);
-    border-radius: 0 0 8px 8px;
-    box-shadow: none;
-    margin: 4px 0;
-    padding: 0;
-  }
-  .nav-links > li.has-dropdown > a:focus {
-    outline: none !important;
-    box-shadow: none !important;
-  }
-  .nav-links li.show-dropdown > .dropdown-menu {
-    display: block;
-    animation: fadeInMenu 0.2s;
-  }
-  /* Caret/arrow for submenus (optional) */
-  .nav-links li.has-dropdown > a::after {
-    content: " ▼";
-    font-size: 0.9em;
-    color: #fff;
-  }
+    /* =============
+       MOBILE STYLES
+       ============= */
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw;
+        background: var(--primary-color);
+        flex-direction: column;
+        gap: 0;
+        z-index: 1100;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+        animation: fadeInMenu 0.25s;
+      }
+      .nav-links.active {
+        display: flex;
+        max-height: 95vh;
+        overflow-y: auto;
+      }
+      .nav-links li { width: 100%; }
+      .nav-links > li > a {
+        padding: 16px 18px;
+        font-size: 1.1rem;
+        border-radius: 0;
+      }
+      .nav-links > li {
+        margin-bottom: 8px;
+      }
+      .nav-links > li:last-child { margin-bottom: 0; }
+      /* Main content padding for mobile */
+      #content { padding-left: 12px; padding-right: 12px; }
+      /* Hero text and intro justified on mobile */
+      .hero-container .intro {
+        padding-left: 8px;
+        padding-right: 8px;
+        text-align: justify;
+      }
+      .hero-container h1,
+      .hero-container .btn {
+        text-align: center;
+      }
+      /* Mobile dropdown menu styles */
+      .dropdown-menu {
+        display: none;
+        position: static !important;
+        background: var(--secondary-color);
+        border-radius: 0 0 8px 8px;
+        box-shadow: none;
+        margin: 4px 0;
+        padding: 0;
+      }
+      .nav-links > li.has-dropdown > a:focus {
+        outline: none !important;
+        box-shadow: none !important;
+      }
+      .nav-links li.show-dropdown > .dropdown-menu {
+        display: block;
+        animation: fadeInMenu 0.2s;
+      }
+      /* Caret/arrow for submenus (optional) */
+      .nav-links li.has-dropdown > a::after {
+        content: " ▼";
+        font-size: 0.9em;
+        color: #fff;
+      }
+      .dropdown-menu li a {
+        margin-left: 4px;
+        padding-left: 24px;
+      }
+      /* Animate mobile menu */
+      @keyframes fadeInMenu {
+        from { opacity: 0; transform: translateY(-8px);}
+        to { opacity: 1; transform: none;}
+      }
+    }
 
-  .dropdown-menu li a {
-    margin-left: 4px;     /* slight indent */
-    padding-left: 24px;   /* keep or adjust as desired */
-  }
-  /* Animate mobile menu */
-  @keyframes fadeInMenu {
-    from { opacity: 0; transform: translateY(-8px);}
-    to { opacity: 1; transform: none;}
-  }
-}
+    /* =========================
+       DESKTOP STYLES
+       ========================= */
+    @media (min-width: 769px) {
+      .hero-container { text-align: left; }
+      .logo-title-container { justify-content: flex-start; }
+      .hero-container h1 { font-size: 3rem; }
+      .intro { font-size: 1.25rem; }
+      .spotlight-photo img { max-width: 100%; height: auto; }
+      .btn { font-size: 1.125rem; padding: 14px 32px; }
+    }
 
-  /* DESKTOP */
-  @media (min-width: 769px) {
-    .hero-container { text-align: left; }
-    .logo-title-container { justify-content: flex-start; }
-    .hero-container h1 { font-size: 3rem; }
-    .intro { font-size: 1.25rem; }
-    .spotlight-photo img { max-width: 100%; height: auto; }
-    .btn { font-size: 1.125rem; padding: 14px 32px; }
-  }
-
-    /* Accessibility Enhancements */
+    /* =========================
+       ACCESSIBILITY ENHANCEMENTS
+       ========================= */
     a:focus, button:focus {
       outline: 2px solid var(--accent-color);
       outline-offset: 2px;
     }
     body.nav-wrapped .nav-links li {width: 100%;}
-    /* ==========================================================================
+
+    /* =========================
        NAV-WRAPPED OVERRIDES
-       - Drop these in as the *last* lines of your <style> block
-       - They will override any desktop absolute‐positioning once body.nav-wrapped is set
-       ========================================================================== */
+       ========================= */
     body.nav-wrapped .dropdown-menu {
       position: static !important;
       z-index: auto !important;
@@ -258,7 +403,6 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       display: none;
     }
-    
     body.nav-wrapped .nav-links li:hover > .dropdown-menu,
     body.nav-wrapped .nav-links li:focus-within > .dropdown-menu {
       display: block;
@@ -275,44 +419,38 @@
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- HEADER: Logo + Hamburger + Main Navigation -->
   <header>
     <nav>
       <a href="#" class="logo">
         <img src="./Images/Logo/Final-a4i-logo-Inverse-cropped.png" alt="A4I Logo">
       </a>
+      <!-- Hamburger button for mobile navigation -->
       <button class="menu-toggle" aria-label="Open main menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
+      <!-- Main navigation links (some with submenus) -->
       <ul class="nav-links">
         <li><a href="#about" class="nav-link">About</a></li>
-      <li class="has-dropdown">
-        <a href="#partners-projects"
-          class="nav-link"
-          data-section="Partners & Projects">
-          Partners & Projects
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="#iiitb-microsoft"
-              class="nav-link"
-              data-parent="Partners & Projects"
-              data-section="IIITB & Microsoft">
-              IIITB & Microsoft
-            </a>
-          </li>
-          <li>
-            <a href="#domain-partners-projects"
-              class="nav-link"
-              data-parent="Partners & Projects"
-              data-section="Domain Partners & Projects">
-              Domain Partners & Projects
-            </a>
-          </li>
-        </ul>
-      </li>
+        <li class="has-dropdown">
+          <a href="#partners-projects" class="nav-link" data-section="Partners & Projects">
+            Partners & Projects
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#iiitb-microsoft" class="nav-link" data-parent="Partners & Projects" data-section="IIITB & Microsoft">
+                IIITB & Microsoft
+              </a>
+            </li>
+            <li>
+              <a href="#domain-partners-projects" class="nav-link" data-parent="Partners & Projects" data-section="Domain Partners & Projects">
+                Domain Partners & Projects
+              </a>
+            </li>
+          </ul>
+        </li>
         <li><a href="#news-events" class="nav-link">News &amp; Events</a></li>
         <li><a href="#research" class="nav-link">Research</a></li>
         <li><a href="#blogs" class="nav-link">Blogs</a></li>
@@ -330,17 +468,15 @@
               </a>
             </li>
           </ul>
-        </li>>
+        </li>
       </ul>
     </nav>
   </header>
 
-  <!-- BREADCRUMB -->
+  <!-- BREADCRUMB: shows current page trail -->
   <div class="breadcrumb">
-    <!-- 1) “Home” must use href="#" and class="nav-link" so the loader will restore the default hero -->
     <a href="#" class="nav-link" rel="noopener noreferrer">
      <svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
-      <!-- Full path (no ellipses) so the icon renders correctly -->
       <path d="M280.4 148.3L96 300.1V464c0 8.8 7.2 16 16 16l112-.3
                c8.8 0 16-7.2 16-16V368c0-8.8 7.2-16 16-16h64
                c8.8 0 16-7.2 16-16v95.7c0 8.8 7.2 16 16 16l112 .3
@@ -350,7 +486,6 @@
      Home
     </a>
     <span>/</span>
-    <!-- 3) This last <span> gets replaced by the loader with the current page’s <title> -->
     <span>Home</span>
   </div>
 
@@ -361,17 +496,17 @@
       <section class="hero">
         <div class="hero-container">
           <div class="logo-title-container">
-            <img src="./Images/Logo/iiitb-logo.png" alt="IIIT Bangalore Logo">
-            <h1>Welcome to A4I</h1>
             <img src="./Images/Logo/microsoft-logo.png" alt="Microsoft Logo">
+            <h1>Welcome to A4I</h1>
+            <img src="./Images/Logo/iiitb-logo.png" alt="IIIT Bangalore Logo">
           </div>
           <p class="intro">
             A4I (AI Innovation & Inclusion Initiative) is a collaboration between <b>Microsoft and IIIT Bangalore</b>. Our mission is to leverage cutting-edge artificial intelligence to drive inclusion and sustainable impact for underserved communities worldwide. We aim to evolve, engineer, and deploy large-scale <b>Digital Public Goods</b>.
-           <br /> <br />
-	   A4I is designed to nurture a strong ecosystem for AI-led innovation that prioritizes inclusive and sustainable development. With support and funding by <b>Microsoft Philanthropies</b>.
-	   <br /> <br /> 
-	   The home of A4I is 
-     <a href="https://www.cagsiiitb.org/" target="_blank" rel="noopener noreferrer">Center for Accessibility in the global south (CAGS)</a> at IIIT Bangalore.
+           <br /><br />
+           A4I is designed to nurture a strong ecosystem for AI-led innovation that prioritizes inclusive and sustainable development. With support and funding by <b>Microsoft Philanthropies</b>.
+           <br /><br /> 
+           The home of A4I is 
+           <a href="https://www.cagsiiitb.org/" target="_blank" rel="noopener noreferrer">Center for Accessibility in the global south (CAGS)</a> at IIIT Bangalore.
           </p>
           <div class="spotlight-photo">
             <img src="./Images/Content-images/Launch_Group_Photo.jpg" alt="Spotlight Photograph Placeholder">
@@ -382,183 +517,182 @@
     </div>
   </main>
 
-<!-- DYNAMIC LOADER SCRIPT (Option 2, with Home restore) -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const contentDiv  = document.getElementById("content");
-  const bcContainer = document.querySelector(".breadcrumb");
-  const defaultHTML = contentDiv.innerHTML;
-  const defaultTitle = document.title;
+  <!-- ===============================
+       DYNAMIC LOADER SCRIPT
+       Handles hash-based navigation,
+       breadcrumbs, and in-page content swap
+       =============================== -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const contentDiv  = document.getElementById("content");
+    const bcContainer = document.querySelector(".breadcrumb");
+    const defaultHTML = contentDiv.innerHTML;
+    const defaultTitle = document.title;
 
-  // Renders: Home / … optional Section / Page
-  function renderBreadcrumb(section, page) {
-    bcContainer.innerHTML = "";
+    // Helper for safe hash/file name
+    function safeHash(str) {
+        return str
+        .trim()
+        .toLowerCase()
+        .replace(/&/g, "")
+        .replace(/[^a-z0-9\s-]/g, "") // only a-z, 0-9, space, hyphen
+        .replace(/\s+/g, "-");
+    }
 
-    // 1) Home link
-    bcContainer.insertAdjacentHTML("beforeend", `
-      <a href="#" class="nav-link" data-section="">
-        <!-- (SVG home-icon here) --> Home
-      </a>
-      <span>/</span>
-    `);
-
-    // 2) Section (if any)
-    if (section) {
-      const hash = section.trim().toLowerCase().replace(/\s+/g,"-");
-      bcContainer.insertAdjacentHTML("beforeend", `
-        <a href="#${hash}" class="nav-link" data-section="${section}">
-          ${section}
+    // Renders breadcrumb trail: Home / Section / Page
+    function renderBreadcrumb(section, page) {
+        bcContainer.innerHTML = "";
+        bcContainer.insertAdjacentHTML("beforeend", `
+        <a href="#" class="nav-link" data-section="">
+            <!-- (SVG home-icon here) --> Home
         </a>
         <span>/</span>
-      `);
+        `);
+        if (section) {
+        const hash = safeHash(section);
+        bcContainer.insertAdjacentHTML("beforeend", `
+            <a href="#${hash}" class="nav-link" data-section="${section}">
+            ${section}
+            </a>
+            <span>/</span>
+        `);
+        }
+        bcContainer.insertAdjacentHTML("beforeend", `<span>${page}</span>`);
     }
 
-    // 3) Final (current page)
-    bcContainer.insertAdjacentHTML("beforeend", `<span>${page}</span>`);
-  }
-
-  // Fetches page, injects content, updates title & breadcrumb
-  async function loadPage(hash, section) {
-    try {
-      const res = await fetch(`${hash}.html`);
-      if (!res.ok) throw new Error("HTTP "+res.status);
-      const text = await res.text();
-      const doc  = new DOMParser().parseFromString(text,"text/html");
-      const frag = doc.getElementById("content");
-      if (!frag) throw new Error("#content missing in "+hash+".html");
-      contentDiv.innerHTML = frag.innerHTML;
-      const pageTitle = doc.querySelector("title")?.innerText || hash;
-      document.title = pageTitle;
-      renderBreadcrumb(section, pageTitle);
-
-      // re-run the nav-wrap check after swapping in new header
-      checkNavWrap();
-
-    } catch(err) {
-      console.error("Loader error:", err);
+    // Fetches and injects page content, updates title & breadcrumb
+    async function loadPage(hash, section) {
+        try {
+        const res = await fetch(`${hash}.html`);
+        if (!res.ok) throw new Error("HTTP "+res.status);
+        const text = await res.text();
+        const doc  = new DOMParser().parseFromString(text,"text/html");
+        const frag = doc.getElementById("content");
+        if (!frag) throw new Error("#content missing in "+hash+".html");
+        contentDiv.innerHTML = frag.innerHTML;
+        if (typeof activateTeamAccordion === "function") {
+          activateTeamAccordion();
+        }
+        const pageTitle = doc.querySelector("title")?.innerText || hash;
+        document.title = pageTitle;
+        renderBreadcrumb(section, pageTitle);
+        // re-run nav-wrap check after swapping header
+        checkNavWrap && checkNavWrap();
+        } catch(err) {
+        console.error("Loader error:", err);
+        }
     }
-  }
 
-  // Click‐delegation for any nav- or footer-links
-  document.addEventListener("click", e => {
-    const a = e.target.closest("a.nav-link, a.footer-link");
-    if (!a) return;
-    const href = a.getAttribute("href");
-    if (!href.startsWith("#")) return;  // allow external URLs, mailto, etc.
-    e.preventDefault();
+    // Click-delegation for nav/footer links (hash navigation)
+    document.addEventListener("click", e => {
+        const a = e.target.closest("a.nav-link, a.footer-link");
+        if (!a) return;
+        const href = a.getAttribute("href");
+        if (!href.startsWith("#")) return;  // allow external URLs
+        e.preventDefault();
 
-    const hash    = href.slice(1);
-    const section = a.dataset.parent || a.dataset.section || "";
+        // Special-case Home: restore original content
+        if (href === "#" || href === "#home") {
+        contentDiv.innerHTML = defaultHTML;
+        document.title = defaultTitle;
+        renderBreadcrumb("", "Home");
+        history.pushState({}, "", "#");
+        return;
+        }
 
-    if (!hash) {
-      // Home clicked: restore default
-      contentDiv.innerHTML = defaultHTML;
-      document.title = defaultTitle;
-      renderBreadcrumb("", "Home");
-      history.pushState({}, "", "#");
+        // All other hash navigation
+        const hash    = href.slice(1);
+        const section = a.dataset.parent || a.dataset.section || "";
+        loadPage(hash, section);
+        history.pushState({hash, section}, "", "#"+hash);
+    });
+
+    // Handle back/forward navigation
+    window.addEventListener("popstate", e => {
+        const state = e.state || {};
+        if (!location.hash) {
+        contentDiv.innerHTML = defaultHTML;
+        document.title = defaultTitle;
+        renderBreadcrumb("", "Home");
+        } else {
+        const hash    = location.hash.slice(1);
+        const section = state.section || "";
+        loadPage(hash, section);
+        }
+    });
+
+    // On initial load, handle any hash in URL
+    if (location.hash) {
+        const hash = location.hash.slice(1);
+        const link = document.querySelector(`a[href="#${hash}"]`);
+        const section = link?.dataset.parent || link?.dataset.section || "";
+        loadPage(hash, section);
     } else {
-      loadPage(hash, section);
-      history.pushState({hash, section}, "", "#"+hash);
+        renderBreadcrumb("", "Home");
     }
-  });
+    });
+  </script>
 
-  // Handle back/forward
-  window.addEventListener("popstate", e => {
-    const state = e.state || {};
-    if (!location.hash) {
-      contentDiv.innerHTML = defaultHTML;
-      document.title = defaultTitle;
-      renderBreadcrumb("", "Home");
-    } else {
-      const hash    = location.hash.slice(1);
-      const section = state.section || "";
-      loadPage(hash, section);
-    }
-  });
-
-  // On initial load with a hash
-  if (location.hash) {
-    const hash = location.hash.slice(1);
-    // Try to find the link to pick up its data-section/parent
-    const link = document.querySelector(`a[href="#${hash}"]`);
-    const section = link?.dataset.parent || link?.dataset.section || "";
-    loadPage(hash, section);
-  } else {
-    // initial “Home” breadcrumb
-    renderBreadcrumb("", "Home");
-  }
-});
-</script>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-container">
-
-    <!-- Quick Links (now hash-based) -->
-    <div class="footer-links">
-      <ul>
-        <li>
-          <a href="#careers" class="footer-link" style="font-size: 1.125rem;">
-            Careers
-          </a>
-        </li>
-        <li>
-          <a href="#committees" class="footer-link" style="font-size: 1.125rem;">
-            Committees
-          </a>
-        </li>
-        <li>
-          <a href="#contact" class="footer-link" style="font-size: 1.125rem;">
-            Contact Us
-          </a>
-        </li>
-      </ul>
+  <!-- ===============================
+       FOOTER
+       =============================== -->
+  <footer>
+    <div class="footer-container">
+      <!-- Quick Links -->
+      <div class="footer-links">
+        <ul>
+          <li><a href="#careers" class="footer-link" style="font-size: 1.125rem;">Careers</a></li>
+          <li><a href="#committees" class="footer-link" style="font-size: 1.125rem;">Committees</a></li>
+          <li><a href="#contact" class="footer-link" style="font-size: 1.125rem;">Contact Us</a></li>
+        </ul>
+      </div>
+      <!-- Contact Details -->
+      <div class="footer-contact">
+        <ul>
+          <li style="margin-bottom: 16px;">
+            <a
+              href="https://www.linkedin.com/company/ai-innovation-and-inclusion-initiative-a4i/"
+              class="footer-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              style="display: inline-flex; align-items: center;"
+            >
+              <svg viewBox="0 0 448 512" width="24" height="24" fill="var(--text-light)">
+                <path d="M100.28 448H7.4V148.9h92.88zm-46.44-345C24.2 103 
+                         0 78.9 0 48.67A53.53 53.53 0 0 1 53.48-5.33 
+                         53.53 53.53 0 0 1 107 48.67c0 30.22-24.2 
+                         54.33-53.16 54.33zM447.9 448h-92.68V302.4c0-34.7-12.46-58.3-43.68-58.3-23.83 
+                         0-38 16-44.29 31.4-2.28 5.5-2.85 13.1-2.85 
+                         20.8V448h-92.74s1.25-241.1 0-266.2h92.74v37.7c12.3-19 
+                         34.34-46.1 83.58-46.1 61 0 106.72 39.8 
+                         106.72 125.1V448z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <span class="icon">📧</span>
+            <a href="mailto:a4i@iiitb.ac.in">a4i@iiitb.ac.in</a>
+          </li>
+          <li>
+            <span class="icon">📞</span>
+            <a href="tel:+918041407777">+91 80 4140 7777</a> /
+            <a href="tel:+9128527627">2852 7627</a>
+          </li>
+          <li>
+            <span class="icon">📍</span>
+            IIITB – Electronic City campus, 26/C, Electronics City,<br><br>
+            Hosur Road, Bengaluru – 560100
+          </li>
+        </ul>
+      </div>
     </div>
+  </footer>
 
-    <!-- Contact Details (LinkedIn icon moved here) -->
-    <div class="footer-contact">
-      <ul>
-        <li style="margin-bottom: 16px;">
-          <a
-            href="https://www.linkedin.com/company/ai-innovation-and-inclusion-initiative-a4i/"
-            class="footer-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            style="display: inline-flex; align-items: center;"
-          >
-            <svg viewBox="0 0 448 512" width="24" height="24" fill="var(--text-light)">
-              <path d="M100.28 448H7.4V148.9h92.88zm-46.44-345C24.2 103 
-                       0 78.9 0 48.67A53.53 53.53 0 0 1 53.48-5.33 
-                       53.53 53.53 0 0 1 107 48.67c0 30.22-24.2 
-                       54.33-53.16 54.33zM447.9 448h-92.68V302.4c0-34.7-12.46-58.3-43.68-58.3-23.83 
-                       0-38 16-44.29 31.4-2.28 5.5-2.85 13.1-2.85 
-                       20.8V448h-92.74s1.25-241.1 0-266.2h92.74v37.7c12.3-19 
-                       34.34-46.1 83.58-46.1 61 0 106.72 39.8 
-                       106.72 125.1V448z"/>
-            </svg>
-          </a>
-        </li>
-        <li>
-          <span class="icon">📧</span>
-          <a href="mailto:a4i@iiitb.ac.in">a4i@iiitb.ac.in</a>
-        </li>
-        <li>
-          <span class="icon">📞</span>
-          <a href="tel:+918041407777">+91 80 4140 7777</a> /
-          <a href="tel:+9128527627">2852 7627</a>
-        </li>
-        <li>
-          <span class="icon">📍</span>
-          IIITB – Electronic City campus, 26/C, Electronics City,<br><br>
-          Hosur Road, Bengaluru – 560100
-        </li>
-      </ul>
-    </div>
-  </div>
-</footer>
-
-    
+  <!-- ===============================
+       HAMBURGER & MOBILE NAV SCRIPT
+       Handles hamburger toggle, submenus, and resets
+       =============================== -->
   <script>
   document.addEventListener("DOMContentLoaded", function() {
     const navLinks = document.querySelector('.nav-links');
@@ -577,7 +711,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Collapse menu after clicking a header item with no dropdown
+    // Mobile submenu open/collapse logic
     navLinks.addEventListener('click', function(e) {
       const link = e.target.closest('a.nav-link');
       if (!link) return;
@@ -585,7 +719,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const li = link.parentElement;
       const hasDropdown = li.classList.contains('has-dropdown');
 
-      // If submenu header: show/hide dropdown, don't close menu
+      // Toggle submenu
       if (hasDropdown) {
         e.preventDefault();
         // Toggle current, close others
@@ -608,7 +742,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // On window resize or hamburger open, always collapse all dropdowns
+    // Collapse all dropdowns on resize (switching to desktop)
     window.addEventListener('resize', function() {
       if (window.innerWidth > 768) {
         navLinks.classList.remove('active');
@@ -616,16 +750,53 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Optional: collapse open submenus on next hamburger open
+    // Collapse open submenus on next hamburger open
     menuBtn.addEventListener('click', function() {
       if (navLinks.classList.contains('active')) {
-        // Remove all open submenus
         navLinks.querySelectorAll('.show-dropdown').forEach(x => x.classList.remove('show-dropdown'));
         lastOpenedDropdown = null;
       }
     });
   });
   </script>
-
+  <script>
+    function activateTeamAccordion() {
+    // Remove all old handlers to avoid stacking events on reload
+    document.querySelectorAll('.member .info-btn').forEach(function(btn) {
+        btn.replaceWith(btn.cloneNode(true));
+    });
+    // Attach new handlers
+    document.querySelectorAll('.member .info-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+        document.querySelectorAll('.member .profile-detail').forEach(function(detail) {
+            detail.style.display = 'none';
+        });
+        document.querySelectorAll('.member .info-btn').forEach(function(b) {
+            b.setAttribute('aria-label','Show profile');
+        });
+        var detail = btn.closest('.member').querySelector('.profile-detail');
+        if (detail && detail.style.display !== 'block') {
+            detail.style.display = 'block';
+            btn.setAttribute('aria-label','Hide profile');
+        } else if (detail) {
+            detail.style.display = 'none';
+            btn.setAttribute('aria-label','Show profile');
+        }
+        e.stopPropagation();
+        });
+    });
+    // Outside click closes all
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.member')) {
+        document.querySelectorAll('.member .profile-detail').forEach(function(detail) {
+            detail.style.display = 'none';
+        });
+        document.querySelectorAll('.member .info-btn').forEach(function(b) {
+            b.setAttribute('aria-label','Show profile');
+        });
+        }
+    });
+    }
+  </script>
 </body>
 </html>

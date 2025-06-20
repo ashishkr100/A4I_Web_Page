@@ -1,92 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Page title used by dynamic loader -->
-  <title>Our Team</title>
-  <!-- Minimal styling for team layout; assume global CSS applies -->
+  <meta charset="UTF-8">
+  <title>IIITB Team</title>
 </head>
 <body>
-  <!-- Fragment wrapper: loader injects this into #content -->
-  <div id="content">
-    <!-- Our Team Core Content -->
-    <section class="team-section">
-      <h2 style="text-align:center; margin-bottom:20px;">Meet Our Team</h2>
-      <div class="team-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:20px;">
-
-        <!-- Member 1 -->
-        <div class="member" style="border:1px solid #ccc; padding:16px; border-radius:8px; position:relative;">
-          <button class="info-btn" aria-label="Toggle description" onclick="const d=this.parentElement.querySelector('.description');d.style.display=(d.style.display==='none'?'block':'none');" style="position:absolute; top:8px; right:8px;">ℹ️</button>
-          <img src="./Images/our-team-images/Aanchal.jpg" alt="Anchal Photo" style="width:100%; height:auto; border-radius:4px;"/>
-          <h3>Anchal</h3>
-          <p class="title">Research Associate</p>
-          <div class="description" style="display:none; margin-top:12px; text-align:left;">
-            Anchal is a Research Associate at the Microsoft AI Innovation and Inclusion Initiative (A4I) at the International Institute of Information Technology (IIIT) Bangalore. She has a Master’s degree in Information Technology from IIIT Bangalore and a Bachelor’s degree in Computer Science from the Indian Institute of Information Technology, Design and Manufacturing (IIITDM) Kancheepuram. Her research interests include Human-Computer Interaction (HCI), Accessibility, and ICT for Development (ICT4D).<br><br>
-            Anchal has previously worked on projects related to accessibility in digital health, focusing on improving user experiences for people with disabilities. She is passionate about leveraging technology to create inclusive solutions that empower marginalized communities.
-          </div>
+<div id="content">
+  <section style="max-width:1000px; margin:40px auto; font-family:'Inter',Arial,sans-serif;">
+    <h2 style="text-align:center; margin-bottom:32px;">IIITB Team</h2>
+    <div class="team-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:28px;">
+      <!-- Aanchal -->
+      <div class="member" style="border:1.5px solid #d4d7dc; padding:18px 14px 22px 14px; border-radius:12px; position:relative; box-shadow:0 4px 16px 0 rgba(50,50,70,0.06); background:#fff;">
+        <div style="position:relative; width:120px; height:120px; margin:0 auto 16px auto;">
+          <img src="./Images/our-team-images/Aanchal.jpg" alt="Aanchal"
+               style="width:120px; height:120px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+          <button class="info-btn" aria-label="Show profile"
+                  style="position:absolute; top:7px; right:7px; background:none; border:none; font-size:1.38em; cursor:pointer; z-index:2; color:#4981a1;">ℹ️</button>
         </div>
-
-        <!-- Member 2 -->
-        <div class="member" style="border:1px solid #ccc; padding:16px; border-radius:8px; position:relative;">
-          <button class="info-btn" aria-label="Toggle description" onclick="const d=this.parentElement.querySelector('.description');d.style.display=(d.style.display==='none'?'block':'none');" style="position:absolute; top:8px; right:8px;">ℹ️</button>
-          <img src="./Images/our-team-images/AmitPrakash.jpg" alt="Amit Prakash Photo" style="width:100%; height:auto; border-radius:4px;"/>
-          <h3>Amit Prakash</h3>
-          <p class="title">Professor & Convener, CAGS, IIIT Bangalore</p>
-          <div class="description" style="display:none; margin-top:12px; text-align:left;">
-            Amit Prakash is a Professor at the International Institute of Information Technology (IIIT) Bangalore. He has been involved in setting up the Institute’s Centre for IT and Public Policy (CITAPP), Centre for Accessibility in the Global South (CAGS) and E-Health Research Centre (EHRC). His interests lie in Information Systems, Governance and Public Policy, particularly as they intersect in development sectors such as public health & nutrition, education & skill development, and food & livelihood security. The focus of his recent research and consulting efforts has been equity and inclusion in matters related to technology designs and policy choices.<br><br>
-            Prior to joining academia, Amit worked for over 15 years on advisory assignments, at Deloitte, PricewaterhouseCoopers (PwC), and Centre for Development of Advanced Computing (C-DAC), involving IT in Governance policies and digital technology designs. He has a doctoral degree in Information Systems from the Indian Institute of Management (IIM) Bangalore and a bachelor’s degree in Civil Engineering from the Indian Institute of Technology (IIT) Roorkee.
-          </div>
+        <div style="text-align:center;">
+          <a href="#" style="font-weight:700; color:#194186; text-decoration:none; font-size:1.15rem; display:inline-block; margin-bottom:2px;">Aanchal</a>
+          <div style="font-size:0.98rem; color:#555; margin-bottom:8px;">Research Associate</div>
         </div>
- 
-       <!-- Member 3 -->
-        <div class="member" style="border:1px solid #ccc; padding:16px; border-radius:8px; position:relative;">
-          <button class="info-btn" aria-label="Toggle description" onclick="const d=this.parentElement.querySelector('.description');d.style.display=(d.style.display==='none'?'block':'none');" style="position:absolute; top:8px; right:8px;">ℹ️</button>
-          <img src="./Images/our-team-images/Ashish.jpg" alt="Ashish Srivastava Photo" style="width:100%; height:auto; border-radius:4px;"/>
-          <h3>Ashish Srivastava</h3>
-          <p class="title">Chief Impact Officer at A4I Lab</p>
-          <div class="description" style="display:none; margin-top:12px; text-align:left;">
-            Ashish is the Chief Impact Officer at A4I (AI Innovation for Inclusion Initiative)—an IIITB and Microsoft Research collaboration. He has over 35 years of senior executive experience at companies like Wipro, Tata Steel, the IISc Innovation Hub, and SLK V-Labs (an AI company)—his career cuts across technologies such as AI, Digital, and Telecom.<br><br>
-            He serves on the Digital Health Associates board and chairs the Scientific Review Board of Armman. Over the last few years, Ashish has pursued social and policy impact through technology. He designed and implemented population-scale AI and Digital solutions in public health, including Maternal & Child welfare. He also created boutique solutions for urban governance and defence. Ashish has been part of several government committees across health, early child education, and Smart City Data Strategy. At the invitation of UK High Commission, he joined an Indian delegation for discussing Indo-UK AI collaboration opportunities and was part of another cohort to study AI impact on healthcare in UK.<br><br>
-            Ashish holds a Master’s from IIIT (Bengaluru), a B. Tech from IIT (BHU), and a PG certificate in Economics from the University of London.
-          </div>
-        </div>
-
-        <!-- Member 4 -->
-        <div class="member" style="border:1px solid #ccc; padding:16px; border-radius:8px; position:relative;">
-          <button class="info-btn" aria-label="Toggle description" onclick="const d=this.parentElement.querySelector('.description');d.style.display=(d.style.display==='none'?'block':'none');" style="position:absolute; top:8px; right:8px;">ℹ️</button>
-          <img src="./Images/our-team-images/Carolyn.jpg" alt="Carolyn Kavita Tauro Photo" style="width:100%; height:auto; border-radius:4px;"/>
-          <h3>Carolyn Kavita Tauro</h3>
-          <p class="title">Post-doctoral fellow at A4I Lab</p>
-          <div class="description" style="display:none; margin-top:12px; text-align:left;">
-            Carolyn Kavita Tauro is a Post-doctoral fellow at the International Institute of Information Technology (IIIT) Bangalore. Her research interests include Information Systems, ICT for Development (ICT4D), Gender and Ethics in ICTs, and Value-sensitive designing. Carolyn’s doctoral thesis focused on dilemmas and capabilities in ICTs surrounding persons who use drugs seeking social harm reduction care in India.<br><br>
-            Prior to joining academia, Carolyn worked as a Health Information Systems Medical Content Advisor with Médecins sans Frontières (MSF)/Doctors Without Borders UK. She has also worked in clinical and managerial capacities for projects offering care in Maternal and Child health, Infectious diseases (TB-HIV-HepC), Mental health and Sexual and Gender-based violence in humanitarian settings at MSF.<br><br>
-            She has a doctoral degree in Information Systems from the University of Oslo (UiO), Norway, a Master’s degree in Public Health and Social Epidemiology from Tata Institute of Social Sciences (TISS), Mumbai, and an M.B.B.S. degree from Nepal.
-          </div>
-        </div>
- 
-       <!-- Member 5 -->
-        <div class="member" style="border:1px solid #ccc; padding:16px; border-radius:8px; position:relative;">
-          <button class="info-btn" aria-label="Toggle description" onclick="const d=this.parentElement.querySelector('.description');d.style.display=(d.style.display==='none'?'block':'none');" style="position:absolute; top:8px; right:8px;">ℹ️</button>
-          <img src="./Images/our-team-images/Pradyumna.jpg" alt="Pradyumna Taduri Photo" style="width:100%; height:auto; border-radius:4px;"/>
-          <h3>Pradyumna Taduri</h3>
-          <p class="title">A4I Project Coordinator</p>
-          <div class="description" style="display:none; margin-top:12px; text-align:left;">
-            Pradyumna is a manager and researcher at the Microsoft AI Innovation and Inclusion Initiative (A4I) centred at CAGS. Prior to this, he worked as a research associate on the Fairwork India project housed at the Centre for Information Technology and Public Policy (CITAPP) at IIITB. His interests include examining the role afforded to technology in ICTD interventions and technology-enabled labour control. As a member of CAGS, he aims to contribute to research in the accessibility space.
-          </div>
-        </div>
-
-        <!-- Member 6 -->
-        <div class="member" style="border:1px solid #ccc; padding:16px; border-radius:8px; position:relative;">
-          <button class="info-btn" aria-label="Toggle description" onclick="const d=this.parentElement.querySelector('.description');d.style.display=(d.style.display==='none'?'block':'none');" style="position:absolute; top:8px; right:8px;">ℹ️</button>
-          <img src="./Images/our-team-images/Shubha.jpg" alt="Shubha Krishnamurthy Photo" style="width:100%; height:auto; border-radius:4px;"/>
-          <h3>Shubha Krishnamurthy</h3>
-          <p class="title">Post-doctoral fellow at A4I Lab</p>
-          <div class="description" style="display:none; margin-top:12px; text-align:left;">
-            Shubha is an Information Systems researcher with a deep passion for identifying and solving complex research problems. Prior to pursuing research, she has two decades of industry experience in product development & management roles covering Software Engineering, Product Management, and Digital Transformation.<br><br>
-            Shubha has a PhD in Information Sciences from Indian Institute of Management, Bengaluru. Her dissertation was titled: "Navigating the Evolving Telemedicine Landscape: Adaptations and Diagnostic Outcomes." She also holds an MS in Software Systems and Engineering from BITS Pilani.
-          </div>
+        <div class="profile-detail" style="display:none; margin-top:10px; font-size:0.98rem; color:#212; background:#f7fafb; border-radius:8px; padding:16px 13px 12px 13px; text-align:left;">
+          Anchal is a Research Associate at the Microsoft AI Innovation and Inclusion Initiative (A4I) at IIIT Bangalore. She has a Master’s degree in Information Technology from IIIT Bangalore and a Bachelor’s degree in Computer Science from IIITDM Kancheepuram. Her research interests include HCI, Accessibility, and ICT4D. She has been working on accessibility in digital health.
         </div>
       </div>
-    </section>
-  </div>
+      <!-- Amit Prakash -->
+      <div class="member" style="border:1.5px solid #d4d7dc; padding:18px 14px 22px 14px; border-radius:12px; position:relative; box-shadow:0 4px 16px 0 rgba(50,50,70,0.06); background:#fff;">
+        <div style="position:relative; width:120px; height:120px; margin:0 auto 16px auto;">
+          <img src="./Images/our-team-images/AmitPrakash.jpg" alt="Amit Prakash"
+               style="width:120px; height:120px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+          <button class="info-btn" aria-label="Show profile"
+                  style="position:absolute; top:7px; right:7px; background:none; border:none; font-size:1.38em; cursor:pointer; z-index:2; color:#4981a1;">ℹ️</button>
+        </div>
+        <div style="text-align:center;">
+          <a href="#" style="font-weight:700; color:#194186; text-decoration:none; font-size:1.15rem; display:inline-block; margin-bottom:2px;">Amit Prakash</a>
+          <div style="font-size:0.98rem; color:#555; margin-bottom:8px;">Professor &amp; Convener, CAGS, IIIT Bangalore</div>
+        </div>
+        <div class="profile-detail" style="display:none; margin-top:10px; font-size:0.98rem; color:#212; background:#f7fafb; border-radius:8px; padding:16px 13px 12px 13px; text-align:left;">
+          Amit Prakash is a Professor at IIIT Bangalore and Head of the Department of Digital Humanities. He helped set up CITAPP, CAGS, and EHRC at IIITB. His research is in information systems, governance, and public policy—especially for health, education, and livelihoods. Formerly with Deloitte, PwC, and C-DAC.
+        </div>
+      </div>
+      <!-- Ashish Srivastava -->
+      <div class="member" style="border:1.5px solid #d4d7dc; padding:18px 14px 22px 14px; border-radius:12px; position:relative; box-shadow:0 4px 16px 0 rgba(50,50,70,0.06); background:#fff;">
+        <div style="position:relative; width:120px; height:120px; margin:0 auto 16px auto;">
+          <img src="./Images/our-team-images/Ashish.jpg" alt="Ashish Srivastava"
+               style="width:120px; height:120px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+          <button class="info-btn" aria-label="Show profile"
+                  style="position:absolute; top:7px; right:7px; background:none; border:none; font-size:1.38em; cursor:pointer; z-index:2; color:#4981a1;">ℹ️</button>
+        </div>
+        <div style="text-align:center;">
+          <a href="#" style="font-weight:700; color:#194186; text-decoration:none; font-size:1.15rem; display:inline-block; margin-bottom:2px;">Ashish Srivastava</a>
+          <div style="font-size:0.98rem; color:#555; margin-bottom:8px;">Chief Impact Officer at A4I Lab</div>
+        </div>
+        <div class="profile-detail" style="display:none; margin-top:10px; font-size:0.98rem; color:#212; background:#f7fafb; border-radius:8px; padding:16px 13px 12px 13px; text-align:left;">
+          Ashish is Chief Impact Officer at A4I (AI Innovation for Inclusion Initiative)—an IIITB and Microsoft Research collaboration. Formerly with Wipro, Tata Steel, IISc Innovation Hub, and SLK V-Labs (AI). He's led large-scale public health, AI, and digital projects and serves on advisory boards.
+        </div>
+      </div>
+      <!-- Carolyn Kavita Tauro -->
+      <div class="member" style="border:1.5px solid #d4d7dc; padding:18px 14px 22px 14px; border-radius:12px; position:relative; box-shadow:0 4px 16px 0 rgba(50,50,70,0.06); background:#fff;">
+        <div style="position:relative; width:120px; height:120px; margin:0 auto 16px auto;">
+          <img src="./Images/our-team-images/Carolyn.jpg" alt="Carolyn Kavita Tauro"
+               style="width:120px; height:120px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+          <button class="info-btn" aria-label="Show profile"
+                  style="position:absolute; top:7px; right:7px; background:none; border:none; font-size:1.38em; cursor:pointer; z-index:2; color:#4981a1;">ℹ️</button>
+        </div>
+        <div style="text-align:center;">
+          <a href="#" style="font-weight:700; color:#194186; text-decoration:none; font-size:1.15rem; display:inline-block; margin-bottom:2px;">Carolyn Kavita Tauro</a>
+          <div style="font-size:0.98rem; color:#555; margin-bottom:8px;">Post-doctoral fellow at A4I Lab</div>
+        </div>
+        <div class="profile-detail" style="display:none; margin-top:10px; font-size:0.98rem; color:#212; background:#f7fafb; border-radius:8px; padding:16px 13px 12px 13px; text-align:left;">
+          Carolyn is a Post-doc at IIITB. Her research is in Information Systems, ICT4D, gender, and ethics. Previously with MSF UK and in various humanitarian/clinical roles. PhD from University of Oslo, MPH from TISS Mumbai, MBBS from Nepal.
+        </div>
+      </div>
+      <!-- Pradyumna Taduri -->
+      <div class="member" style="border:1.5px solid #d4d7dc; padding:18px 14px 22px 14px; border-radius:12px; position:relative; box-shadow:0 4px 16px 0 rgba(50,50,70,0.06); background:#fff;">
+        <div style="position:relative; width:120px; height:120px; margin:0 auto 16px auto;">
+          <img src="./Images/our-team-images/Pradyumna.jpg" alt="Pradyumna Taduri"
+               style="width:120px; height:120px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+          <button class="info-btn" aria-label="Show profile"
+                  style="position:absolute; top:7px; right:7px; background:none; border:none; font-size:1.38em; cursor:pointer; z-index:2; color:#4981a1;">ℹ️</button>
+        </div>
+        <div style="text-align:center;">
+          <a href="#" style="font-weight:700; color:#194186; text-decoration:none; font-size:1.15rem; display:inline-block; margin-bottom:2px;">Pradyumna Taduri</a>
+          <div style="font-size:0.98rem; color:#555; margin-bottom:8px;">A4I Project Coordinator</div>
+        </div>
+        <div class="profile-detail" style="display:none; margin-top:10px; font-size:0.98rem; color:#212; background:#f7fafb; border-radius:8px; padding:16px 13px 12px 13px; text-align:left;">
+          Pradyumna is a manager/researcher at A4I (CAGS). Previously research associate on Fairwork India (CITAPP, IIITB). Interests: technology in ICTD, labor, and accessibility.
+        </div>
+      </div>
+      <!-- Shubha Krishnamurthy -->
+      <div class="member" style="border:1.5px solid #d4d7dc; padding:18px 14px 22px 14px; border-radius:12px; position:relative; box-shadow:0 4px 16px 0 rgba(50,50,70,0.06); background:#fff;">
+        <div style="position:relative; width:120px; height:120px; margin:0 auto 16px auto;">
+          <img src="./Images/our-team-images/Shubha.jpg" alt="Shubha Krishnamurthy"
+               style="width:120px; height:120px; object-fit:cover; border-radius:8px; display:block; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+          <button class="info-btn" aria-label="Show profile"
+                  style="position:absolute; top:7px; right:7px; background:none; border:none; font-size:1.38em; cursor:pointer; z-index:2; color:#4981a1;">ℹ️</button>
+        </div>
+        <div style="text-align:center;">
+          <a href="#" style="font-weight:700; color:#194186; text-decoration:none; font-size:1.15rem; display:inline-block; margin-bottom:2px;">Shubha Krishnamurthy</a>
+          <div style="font-size:0.98rem; color:#555; margin-bottom:8px;">Post-doctoral fellow at A4I Lab</div>
+        </div>
+        <div class="profile-detail" style="display:none; margin-top:10px; font-size:0.98rem; color:#212; background:#f7fafb; border-radius:8px; padding:16px 13px 12px 13px; text-align:left;">
+          Shubha is an Information Systems researcher, previously two decades in product/dev management. PhD from IIMB ("Navigating the Evolving Telemedicine Landscape"), MS from BITS Pilani.
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 </body>
 </html>
