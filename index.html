@@ -42,7 +42,7 @@
       --accent-color: #ff6600;
       --text-light: #fff;
       --bg-light: #f9f9f9;
-      --breadcrumb-bg: #eef4fb;
+      --breadcrumb-bg: #D3D8DF;
       --breadcrumb-text: #333C47;
       --transition-speed: 0.3s;
     }
@@ -166,6 +166,33 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+    }
+    .hero-title-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;   /* Reduce this if you want it even tighter */
+    }
+
+    .hero-logos {
+      display: flex;
+      gap: 1.5rem;          /* Adjust the space between logos if needed */
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;  /* Space between logos and title */
+    }
+
+    .hero-logo {
+      width: 80px;          /* Adjust as needed for your logos */
+      height: auto;
+      max-width: 24vw;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;    /* Match your preferred headline size */
+      font-weight: 700;
+      text-align: center;
+      color: #002244;       /* Or your preferred main header color */
     }
     .logo-title-container {
       display: flex;
@@ -495,10 +522,14 @@
       <!-- Default Hero Content -->
       <section class="hero">
         <div class="hero-container">
-          <div class="logo-title-container">
-            <img src="./Images/Logo/microsoft-logo.png" alt="Microsoft Logo">
-            <h1>Welcome to A4I</h1>
-            <img src="./Images/Logo/iiitb-logo.png" alt="IIIT Bangalore Logo">
+          <div class="hero-title-container">
+            <div class="hero-logos">
+              <img class="hero-logo" src="./Images/Logo/microsoft-logo.png" alt="Microsoft Logo">
+              <img class="hero-logo" src="./Images/Logo/iiitb-logo.png" alt="IIIT Bangalore Logo">
+            </div>
+            <div class="hero-title">
+              Welcome to A4I
+            </div>
           </div>
           <p class="intro">
             A4I (AI Innovation & Inclusion Initiative) is a collaboration between <b>Microsoft and IIIT Bangalore</b>. Our mission is to leverage cutting-edge artificial intelligence to drive inclusion and sustainable impact for underserved communities worldwide. We aim to evolve, engineer, and deploy large-scale <b>Digital Public Goods</b>.
@@ -637,28 +668,33 @@
      FOOTER
      =============================== -->
 <footer>
-  <div class="footer-container" style="display:flex !important; flex-wrap:wrap !important; justify-content:space-between !important; align-items:flex-start !important; gap:0px !important;">
+  <div class="footer-container"
+       style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:0px !important;
+              max-width:1200px; margin:0 auto; padding:0 12px 0 12px;">
 
     <!-- Left: Vertical Menu Links -->
-    <div class="footer-links" style="flex:1 1 180px; padding:4px 0 4px 20px;">
-      <ul style="list-style:none; padding:0 !important; margin:0 !important; display:flex !important; flex-direction:column !important; align-items:flex-start !important; gap:0px !important;">
-        <li style="margin-bottom:24px !important; width:100% !important;">
-          <a href="#committees" class="footer-link" style="font-size:1.18rem; text-decoration:none; color:var(--text-light); display:block !important;">Committees</a>
+    <div class="footer-links"
+         style="width:220px; flex:none; padding:10px 0 10px 14px; margin-bottom:0 !important;">
+      <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; align-items:flex-start; gap:0;">
+        <li style="margin-bottom:12px; width:100%;">
+          <a href="#committees" class="footer-link"
+             style="font-size:1.18rem; text-decoration:none; color:var(--text-light); display:block;">Committees</a>
         </li>
-        <li style="margin-bottom:22px !important; width:100% !important;">
-          <a href="#careers" class="footer-link" style="font-size:1.18rem; text-decoration:none; color:var(--text-light); display:block !important;">Careers</a>
+        <li style="margin-bottom:8px; width:100%;">
+          <a href="#careers" class="footer-link"
+             style="font-size:1.18rem; text-decoration:none; color:var(--text-light); display:block;">Careers</a>
         </li>
-        <li style="margin-bottom:0 !important; width:100% !important;">
-          <span style="font-size:1.18rem; color:var(--text-light); display:inline-block !important;">Meet us at</span>
+        <li style="margin-bottom:0 !important; width:100%;">
+          <span style="font-size:1.18rem; color:var(--text-light); display:inline-block;">Follow us at</span>
           <a
             href="https://www.linkedin.com/company/ai-innovation-and-inclusion-initiative-a4i/"
             class="footer-link"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            style="display:inline-flex !important; align-items:center !important; margin-left:8px !important;"
-          >
-            <svg viewBox="0 0 448 512" width="24" height="24" fill="var(--text-light)" style="position:relative; top:4px; vertical-align:middle; margin-left:2px;">
+            style="display:inline-flex; align-items:center; margin-left:8px;">
+            <svg viewBox="0 0 448 512" width="24" height="24" fill="var(--text-light)"
+                 style="position:relative; top:3px; vertical-align:middle; margin-left:2px;">
               <path d="M100.28 448H7.4V148.9h92.88zm-46.44-345C24.2 103 
                        0 78.9 0 48.67A53.53 53.53 0 0 1 53.48-5.33 
                        53.53 53.53 0 0 1 107 48.67c0 30.22-24.2 
@@ -673,28 +709,55 @@
       </ul>
     </div>
 
-    <!-- Right: Contact Details -->
-    <div class="footer-contact" style="flex:1 1 260px;">
-      <ul style="list-style:none; padding:0 !important; margin:0 !important;">
-        <li style="margin-bottom:14px !important;">
-          <span class="icon" style="margin-right:7px; font-size:1.15em; color:var(--text-light);">📧</span>
-          <a href="mailto:a4i@iiitb.ac.in" style="color:var(--text-light); text-decoration:none;">a4i@iiitb.ac.in</a>
-        </li>
-        <li style="margin-bottom:14px !important;">
-          <span class="icon" style="margin-right:7px; font-size:1.15em; color:var(--text-light);">📞</span>
-          <a href="tel:+918041407777" style="color:var(--text-light); text-decoration:none;">+91 80 41407777</a> /
-          <a href="tel:+918028527627" style="color:var(--text-light); text-decoration:none;">28527627</a>
-        </li>
-        <li style="margin-bottom:0 !important;">
-          <span class="icon" style="margin-right:7px; font-size:1.15em; color:var(--text-light);">📍</span>
-          IIITB – Electronic City campus, 26/C,<br>
-          Electronic City, Hosur Road,<br>
-          Bengaluru – 560100 India 
-        </li>
-      </ul>
-    </div>
+    <!-- Right: Contact Details in a colored box with header icon -->
+<!-- Right: Contact Details in a colored box with header icon -->
+<div class="footer-contact contact-card"
+     style="flex:1 1 260px; background:#D3D8DF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06);
+            padding:4px 8px 4px 8px; margin-top:6px; margin-bottom:6px; min-width:220px; position:relative; color:#212c34;">
+  <!-- Horizontal line for mobile (hidden on desktop via media query below) -->
+  <hr class="footer-separator" style="border:0; border-top:1.5px solid #d8e1ec; margin:0 0 14px 0; display:none;">
+  <!-- Contact icon header (you can change icon as desired) -->
+  <div style="text-align:center; margin-bottom:8px;">
+    <span style="font-size:2em; color:#294668;" aria-label="Contact">📬</span>
   </div>
+  <ul style="list-style:none; padding:0; margin:0;">
+    <li style="margin-bottom:10px;">
+      <span class="icon" style="margin-right:7px; font-size:1.15em; color:#294668;">📧</span>
+      <a href="mailto:a4i@iiitb.ac.in" style="color:#212c34 !important; text-decoration:none; font-weight:500;">a4i@iiitb.ac.in</a>
+    </li>
+    <li style="margin-bottom:10px;">
+      <span class="icon" style="margin-right:7px; font-size:1.15em; color:#294668;">📞</span>
+      <a href="tel:+918041407777" style="color:#212c34 !important; text-decoration:none; font-weight:500;">+91 80 41407777</a> /
+      <a href="tel:+918028527627" style="color:#212c34 !important; text-decoration:none; font-weight:500;">28527627</a>
+    </li>
+    <li>
+      <span class="icon" style="margin-right:7px; font-size:1.15em; color:#294668;">📍</span>
+      IIIT-B, Electronic City Campus,<br>
+      26/C, Electronic City,<br>
+      Hosur Road, Bengaluru – 560100 
+    </li>
+  </ul>
+</div>
+
+  </div>
+  <style>
+    /* Responsive footer separator (shows on mobile only) */
+    @media (max-width: 650px) {
+      .footer-container {
+        flex-direction: column !important;
+        gap: 0 !important;
+      }
+      .footer-contact.contact-card {
+        margin-top: 22px !important;
+      }
+      .footer-contact.contact-card .footer-separator {
+        display: block !important;
+      }
+    }
+  </style>
 </footer>
+
+
 
   <!-- ===============================
        HAMBURGER & MOBILE NAV SCRIPT
