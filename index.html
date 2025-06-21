@@ -81,7 +81,7 @@
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 4px;
+      gap: 8px;
       flex-wrap: wrap;
     }
     .nav-links li { position: relative; }
@@ -385,8 +385,8 @@
        ACCESSIBILITY ENHANCEMENTS
        ========================= */
     a:focus, button:focus {
-      outline: 2px solid var(--accent-color);
-      outline-offset: 2px;
+      outline: 2px dotted #2684FF; /* Subtle blue focus for accessibility */
+      border-radius: 4px;
     }
     body.nav-wrapped .nav-links li {width: 100%;}
 
@@ -633,61 +633,68 @@
     });
   </script>
 
-  <!-- ===============================
-       FOOTER
-       =============================== -->
-  <footer>
-    <div class="footer-container">
-      <!-- Quick Links -->
-      <div class="footer-links">
-        <ul>
-          <li><a href="#careers" class="footer-link" style="font-size: 1.125rem;">Careers</a></li>
-          <li><a href="#committees" class="footer-link" style="font-size: 1.125rem;">Committees</a></li>
-          <li><a href="#contact" class="footer-link" style="font-size: 1.125rem;">Contact Us</a></li>
-        </ul>
-      </div>
-      <!-- Contact Details -->
-      <div class="footer-contact">
-        <ul>
-          <li style="margin-bottom: 16px;">
-            <a
-              href="https://www.linkedin.com/company/ai-innovation-and-inclusion-initiative-a4i/"
-              class="footer-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              style="display: inline-flex; align-items: center;"
-            >
-              <svg viewBox="0 0 448 512" width="24" height="24" fill="var(--text-light)">
-                <path d="M100.28 448H7.4V148.9h92.88zm-46.44-345C24.2 103 
-                         0 78.9 0 48.67A53.53 53.53 0 0 1 53.48-5.33 
-                         53.53 53.53 0 0 1 107 48.67c0 30.22-24.2 
-                         54.33-53.16 54.33zM447.9 448h-92.68V302.4c0-34.7-12.46-58.3-43.68-58.3-23.83 
-                         0-38 16-44.29 31.4-2.28 5.5-2.85 13.1-2.85 
-                         20.8V448h-92.74s1.25-241.1 0-266.2h92.74v37.7c12.3-19 
-                         34.34-46.1 83.58-46.1 61 0 106.72 39.8 
-                         106.72 125.1V448z"/>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <span class="icon">📧</span>
-            <a href="mailto:a4i@iiitb.ac.in">a4i@iiitb.ac.in</a>
-          </li>
-          <li>
-            <span class="icon">📞</span>
-            <a href="tel:+918041407777">+91 80 4140 7777</a> /
-            <a href="tel:+9128527627">2852 7627</a>
-          </li>
-          <li>
-            <span class="icon">📍</span>
-            IIITB – Electronic City campus, 26/C, Electronics City,<br><br>
-            Hosur Road, Bengaluru – 560100
-          </li>
-        </ul>
-      </div>
+<!-- ===============================
+     FOOTER
+     =============================== -->
+<footer>
+  <div class="footer-container" style="display:flex !important; flex-wrap:wrap !important; justify-content:space-between !important; align-items:flex-start !important; gap:0px !important;">
+
+    <!-- Left: Vertical Menu Links -->
+    <div class="footer-links" style="flex:1 1 180px; padding:4px 0 4px 20px;">
+      <ul style="list-style:none; padding:0 !important; margin:0 !important; display:flex !important; flex-direction:column !important; align-items:flex-start !important; gap:0px !important;">
+        <li style="margin-bottom:24px !important; width:100% !important;">
+          <a href="#committees" class="footer-link" style="font-size:1.18rem; text-decoration:none; color:var(--text-light); display:block !important;">Committees</a>
+        </li>
+        <li style="margin-bottom:22px !important; width:100% !important;">
+          <a href="#careers" class="footer-link" style="font-size:1.18rem; text-decoration:none; color:var(--text-light); display:block !important;">Careers</a>
+        </li>
+        <li style="margin-bottom:0 !important; width:100% !important;">
+          <span style="font-size:1.18rem; color:var(--text-light); display:inline-block !important;">Meet us at</span>
+          <a
+            href="https://www.linkedin.com/company/ai-innovation-and-inclusion-initiative-a4i/"
+            class="footer-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            style="display:inline-flex !important; align-items:center !important; margin-left:8px !important;"
+          >
+            <svg viewBox="0 0 448 512" width="24" height="24" fill="var(--text-light)" style="position:relative; top:4px; vertical-align:middle; margin-left:2px;">
+              <path d="M100.28 448H7.4V148.9h92.88zm-46.44-345C24.2 103 
+                       0 78.9 0 48.67A53.53 53.53 0 0 1 53.48-5.33 
+                       53.53 53.53 0 0 1 107 48.67c0 30.22-24.2 
+                       54.33-53.16 54.33zM447.9 448h-92.68V302.4c0-34.7-12.46-58.3-43.68-58.3-23.83 
+                       0-38 16-44.29 31.4-2.28 5.5-2.85 13.1-2.85 
+                       20.8V448h-92.74s1.25-241.1 0-266.2h92.74v37.7c12.3-19 
+                       34.34-46.1 83.58-46.1 61 0 106.72 39.8 
+                       106.72 125.1V448z"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
     </div>
-  </footer>
+
+    <!-- Right: Contact Details -->
+    <div class="footer-contact" style="flex:1 1 260px;">
+      <ul style="list-style:none; padding:0 !important; margin:0 !important;">
+        <li style="margin-bottom:14px !important;">
+          <span class="icon" style="margin-right:7px; font-size:1.15em; color:var(--text-light);">📧</span>
+          <a href="mailto:a4i@iiitb.ac.in" style="color:var(--text-light); text-decoration:none;">a4i@iiitb.ac.in</a>
+        </li>
+        <li style="margin-bottom:14px !important;">
+          <span class="icon" style="margin-right:7px; font-size:1.15em; color:var(--text-light);">📞</span>
+          <a href="tel:+918041407777" style="color:var(--text-light); text-decoration:none;">+91 80 41407777</a> /
+          <a href="tel:+918028527627" style="color:var(--text-light); text-decoration:none;">28527627</a>
+        </li>
+        <li style="margin-bottom:0 !important;">
+          <span class="icon" style="margin-right:7px; font-size:1.15em; color:var(--text-light);">📍</span>
+          IIITB – Electronic City campus, 26/C,<br>
+          Electronic City, Hosur Road,<br>
+          Bengaluru – 560100 India 
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
 
   <!-- ===============================
        HAMBURGER & MOBILE NAV SCRIPT
