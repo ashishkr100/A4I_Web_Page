@@ -194,7 +194,7 @@
       text-align: center;
       color: #002244;       /* Or your preferred main header color */
     }
-    .logo-title-container {
+    /*.logo-title-container {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -205,6 +205,29 @@
     .logo-title-container img {
       max-height: 60px;
       width: auto;
+    }*/
+    .hero-title-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+    }
+
+    .hero-logos {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;               /* Space between logos */
+      margin-bottom: 10px;     /* Space below logos */
+      flex-wrap: nowrap;       /* Never wrap logos onto multiple lines */
+    }
+
+    .hero-logo {
+      width: 120px;             /* Large desktop size */
+      height: auto;
+      max-width: 22vw;         /* Responsive limit based on viewport width */
+      transition: width 0.2s;  /* Smooth resize */
     }
     .hero-container h1 {
       font-size: 2.5rem;
@@ -352,6 +375,14 @@
       /* Main content padding for mobile */
       #content { padding-left: 12px; padding-right: 12px; }
       /* Hero text and intro justified on mobile */
+      .hero-logo {
+        width: 52px;           /* Smaller logos on mobile */
+        max-width: 28vw;
+      }
+      .hero-logos {
+        gap: 1.1rem;
+        margin-bottom: 7px;
+      }
       .hero-container .intro {
         padding-left: 8px;
         padding-right: 8px;
@@ -710,34 +741,33 @@
     </div>
 
     <!-- Right: Contact Details in a colored box with header icon -->
-<!-- Right: Contact Details in a colored box with header icon -->
-<div class="footer-contact contact-card"
-     style="flex:1 1 260px; background:#D3D8DF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06);
-            padding:4px 8px 4px 8px; margin-top:6px; margin-bottom:6px; min-width:220px; position:relative; color:#212c34;">
-  <!-- Horizontal line for mobile (hidden on desktop via media query below) -->
-  <hr class="footer-separator" style="border:0; border-top:1.5px solid #d8e1ec; margin:0 0 14px 0; display:none;">
-  <!-- Contact icon header (you can change icon as desired) -->
-  <div style="text-align:center; margin-bottom:8px;">
-    <span style="font-size:2em; color:#294668;" aria-label="Contact">📬</span>
-  </div>
-  <ul style="list-style:none; padding:0; margin:0;">
-    <li style="margin-bottom:10px;">
-      <span class="icon" style="margin-right:7px; font-size:1.15em; color:#294668;">📧</span>
-      <a href="mailto:a4i@iiitb.ac.in" style="color:#212c34 !important; text-decoration:none; font-weight:500;">a4i@iiitb.ac.in</a>
-    </li>
-    <li style="margin-bottom:10px;">
-      <span class="icon" style="margin-right:7px; font-size:1.15em; color:#294668;">📞</span>
-      <a href="tel:+918041407777" style="color:#212c34 !important; text-decoration:none; font-weight:500;">+91 80 41407777</a> /
-      <a href="tel:+918028527627" style="color:#212c34 !important; text-decoration:none; font-weight:500;">28527627</a>
-    </li>
-    <li>
-      <span class="icon" style="margin-right:7px; font-size:1.15em; color:#294668;">📍</span>
-      IIIT-B, Electronic City Campus,<br>
-      26/C, Electronic City,<br>
-      Hosur Road, Bengaluru – 560100 
-    </li>
-  </ul>
-</div>
+    <div class="footer-contact contact-card"
+        style="flex:1 1 260px; background:#D3D8DF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06);
+                padding:4px 8px 4px 8px; margin-top:6px; margin-bottom:6px; min-width:220px; position:relative; color:#212c34;">
+      <!-- Horizontal line for mobile (hidden on desktop via media query below) -->
+      <hr class="footer-separator" style="border:0; border-top:1.5px solid #d8e1ec; margin:0 0 14px 0; display:none;">
+      <!-- Contact icon header (you can change icon as desired) 
+      <div style="text-align:center; margin-bottom:8px;">
+        <span style="font-size:2em; color:#294668;" aria-label="Contact">📬</span>
+      </div>-->
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li style="margin-bottom:10px;">
+          <span class="icon" style="margin-right:7px; font-size:1.15em; color:#294668;">📧</span>
+          <a href="mailto:a4i@iiitb.ac.in" style="color:#212c34 !important; text-decoration:none; font-weight:500;">a4i@iiitb.ac.in</a>
+        </li>
+        <li style="margin-bottom:10px;">
+          <span class="icon" style="margin-right:7px; font-size:1.15em; color:#294668;">📞</span>
+          <a href="tel:+918041407777" style="color:#212c34 !important; text-decoration:none; font-weight:500;">+91 80 41407777</a> /
+          <a href="tel:+918028527627" style="color:#212c34 !important; text-decoration:none; font-weight:500;">28527627</a>
+        </li>
+        <li>
+          <span class="icon" style="margin-right:7px; font-size:1.15em; color:#294668;">📍</span>
+          IIIT-B, Electronic City Campus,<br>
+          26/C, Electronic City,<br>
+          Hosur Road, Bengaluru – 560100 
+        </li>
+      </ul>
+    </div>
 
   </div>
   <style>
