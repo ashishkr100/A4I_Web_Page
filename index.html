@@ -635,6 +635,9 @@
         if (typeof activateTeamAccordion === "function") {
           activateTeamAccordion();
         }
+        if (typeof activateBlogAccordion === "function") {
+                  activateBlogAccordion();
+        }
         const pageTitle = doc.querySelector("title")?.innerText || hash;
         document.title = pageTitle;
         renderBreadcrumb(section, pageTitle);
@@ -897,6 +900,48 @@
         }
     });
     }
+  </script>
+  <script>
+  function activateBlogAccordion() {
+    // Remove old handlers to avoid stacking events on reload
+    console.log("activateBlogAccordion called")
+    document.querySelectorAll('.blog-list .info-btn').forEach(function(btn) {
+        btn.replaceWith(btn.cloneNode(true));
+    });
+    // Attach new handlers
+    document.querySelectorAll('.blog-list .info-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            // Close all blog details
+            document.querySelectorAll('.blog-list .profile-detail').forEach(function(detail) {
+                detail.style.display = 'none';
+            });
+            document.querySelectorAll('.blog-list .info-btn').forEach(function(b) {
+                b.setAttribute('aria-label','Show blog content');
+            });
+            // Toggle clicked blog detail
+            var detail = btn.parentElement.parentElement.querySelector('.profile-detail');
+            if (detail && detail.style.display !== 'block') {
+                detail.style.display = 'block';
+                btn.setAttribute('aria-label','Hide blog content');
+            } else if (detail) {
+                detail.style.display = 'none';
+                btn.setAttribute('aria-label','Show blog content');
+            }
+            e.stopPropagation();
+        });
+    });
+    // Outside click closes all
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.blog-list')) {
+            document.querySelectorAll('.blog-list .profile-detail').forEach(function(detail) {
+                detail.style.display = 'none';
+            });
+            document.querySelectorAll('.blog-list .info-btn').forEach(function(b) {
+                b.setAttribute('aria-label','Show blog content');
+            });
+        }
+    });
+  }
   </script>
 </body>
 </html>
