@@ -167,26 +167,7 @@
       align-items: center;
       text-align: center;
     }
-    .hero-title-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 20px;   /* Reduce this if you want it even tighter */
-    }
 
-    .hero-logos {
-      display: flex;
-      gap: 1.5rem;          /* Adjust the space between logos if needed */
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;  /* Space between logos and title */
-    }
-
-    .hero-logo {
-      width: 80px;          /* Adjust as needed for your logos */
-      height: auto;
-      max-width: 24vw;
-    }
 
     .hero-title {
       font-size: 2.2rem;    /* Match your preferred headline size */
@@ -194,23 +175,13 @@
       text-align: center;
       color: #002244;       /* Or your preferred main header color */
     }
-    /*.logo-title-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-    .logo-title-container img {
-      max-height: 60px;
-      width: auto;
-    }*/
+
     .hero-title-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding-top: 20px;
+      /*padding-left: 20px; */
     }
 
     .hero-logos {
@@ -220,13 +191,14 @@
       align-items: center;
       gap: 2rem;               /* Space between logos */
       margin-bottom: 10px;     /* Space below logos */
+      margin: 0 auto 10px auto;  /* Horizontally centers the block itself */
       flex-wrap: nowrap;       /* Never wrap logos onto multiple lines */
     }
 
     .hero-logo {
-      width: 120px;             /* Large desktop size */
+      width: 125px;             /* Large desktop size */
       height: auto;
-      max-width: 22vw;         /* Responsive limit based on viewport width */
+      max-width: 30vw;         /* Responsive limit based on viewport width */
       transition: width 0.2s;  /* Smooth resize */
     }
     .hero-container h1 {
@@ -377,8 +349,8 @@
       #content { padding-left: 12px; padding-right: 12px; }
       /* Hero text and intro justified on mobile */
       .hero-logo {
-        width: 52px;           /* Smaller logos on mobile */
-        max-width: 28vw;
+        width: 90px;           /* Smaller logos on mobile */
+        max-width: 40vw;
       }
       .hero-logos {
         gap: 1.1rem;
