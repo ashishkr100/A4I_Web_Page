@@ -106,7 +106,11 @@
       position: absolute;
       top: 100%;
       left: 0;
-      background-color: var(--secondary-color);
+      /*background-color: var(--secondary-color);*/
+      background: #004080;   /* Or any solid color */
+      background-color: #004080;
+      opacity: 1;                               /* Fully opaque */
+      /*background: var(--secondary-color);       /* Redundant with background-color, but OK */
       border-radius: 4px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       list-style: none;
@@ -425,13 +429,15 @@
        NAV-WRAPPED OVERRIDES
        ========================= */
     body.nav-wrapped .dropdown-menu {
-      position: static !important;
-      z-index: auto !important;
-      width: 100% !important;
-      background-color: var(--secondary-color);
-      margin: 4px 0;
+      position: absolute !important;
+      z-index: 2000 !important;  /* or a value higher than your header/menu */
+      width: 200px !important;   /* or min-width:160px or whatever fits your design */
+      left: 0;                   /* Make sure it's aligned as needed */
+      top: 100%;                 /* Drop it below the menu item */
+      background-color: #004080;
+      margin: 4px 0 0 0;
       padding: 8px 0;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.13);
       display: none;
     }
     body.nav-wrapped .nav-links li:hover > .dropdown-menu,
@@ -445,6 +451,15 @@
       white-space: normal;
       font-size: 0.95rem;
       line-height: 1.4;
+    }
+    /* Make all dropdowns fully opaque and visually distinct */
+    .dropdown-menu {
+      background: #004080 !important;
+      opacity: 1 !important;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.22) !important;
+      border: 2px solid #fff !important;
+      border-radius: 8px !important;
+      z-index: 2000 !important;
     }
   </style>
 </head>
